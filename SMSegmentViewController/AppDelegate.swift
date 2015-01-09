@@ -1,9 +1,6 @@
 //
-//  AppDelegate.swift
-//  SMSegmentViewController
-//
-//  Created by si.ma on 05/01/2015.
-//  Copyright (c) 2015 si.ma. All rights reserved.
+//  Created by Si Ma on 05/01/2015.
+//  Copyright (c) 2015 Si Ma. All rights reserved.
 //
 
 import UIKit

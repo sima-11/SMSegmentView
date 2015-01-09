@@ -1,19 +1,22 @@
 //
-//  ViewController.swift
 //  SMSegmentViewController
 //
-//  Created by si.ma on 05/01/2015.
-//  Copyright (c) 2015 si.ma. All rights reserved.
+//  Created by Si Ma on 05/01/2015.
+//  Copyright (c) 2015 Si Ma. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController, SMSegmentViewDelegate {
+    
+    var segmentView: SMSegmentView!
+    var margin: CGFloat = 10.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let segmentView = SMSegmentView(frame: CGRect(x: 10.0, y: 50.0, width: 330.0, height: 40.0), seperatorColour: UIColor.blueColor(), seperatorWidth: 1.0, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor.blackColor(), keySegmentOffSelectionColour: UIColor.greenColor(), keyContentVerticalMargin: 5.0])
+        
+        self.segmentView = SMSegmentView(frame: CGRect(x: self.margin, y: 50.0, width: self.view.frame.size.width - self.margin*2, height: 40.0), seperatorColour: UIColor.blueColor(), seperatorWidth: 1.0, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor.blackColor(), keySegmentOffSelectionColour: UIColor.greenColor(), keyContentVerticalMargin: 5.0])
         segmentView.delegate = self
         
         // Original iOS style of border
@@ -37,6 +40,14 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         /*
           Implement what you want the app to do after the segment gets tapped
         */
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.All.rawValue)
+    }
+    
+    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.segmentView.frame = CGRect(x: self.margin, y: 50.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
     }
 }
 

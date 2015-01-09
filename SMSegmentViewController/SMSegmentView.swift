@@ -86,6 +86,12 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         }
     }
     
+    override var frame: CGRect {
+        didSet {
+            self.updateFrameForSegments()
+        }
+    }
+    
     private var segments: Array<SMSegment> = Array()
     
     required init(coder aDecoder: NSCoder) {

@@ -177,7 +177,7 @@ class SMSegment: UIView {
     
     // MARK: Update Frame
     private func resetContentFrame() {
-        println("vertical margin: \(self.verticalMargin)")
+        
         var distanceBetween: CGFloat = 0.0
         var imageViewFrame = CGRectMake(0.0, self.verticalMargin, 0.0, self.frame.size.height - self.verticalMargin*2)
         
