@@ -44,6 +44,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
             for segment in self.segments {
                 segment.seperatorWidth = self.seperatorWidth
             }
+            self.updateFrameForSegments()
         }
     }
     

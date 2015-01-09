@@ -30,7 +30,7 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         segmentView.addSegmentWithTitle("Segment C", onSelectionImage: UIImage(named: "globe_light"), offSelectionImage: UIImage(named: "globe"))
         
         // Set segment with index 0 as selected by default
-        segmentView.selectSegmentAtIndex(0)
+        //segmentView.selectSegmentAtIndex(0)
         
         self.view.addSubview(segmentView)
     }
@@ -40,6 +40,14 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         /*
           Implement what you want the app to do after the segment gets tapped
         */
+        segmentView.segmentOnSelectionColour = UIColor.darkGrayColor()
+        segmentView.segmentOffSelectionColour = UIColor.lightGrayColor()
+        segmentView.segmentOnSelectionTextColour = UIColor.whiteColor()
+        segmentView.segmentOffSelectionTextColour = UIColor.blackColor()
+        //segmentView.segmentTitleFont = UIFont(name: "Helvetica Neue", size: 1.0)!
+        segmentView.segmentVerticalMargin = 10.0
+        segmentView.seperatorWidth = 10.0
+        segmentView.seperatorColour = UIColor.grayColor()
     }
     
     override func supportedInterfaceOrientations() -> Int {
@@ -47,6 +55,9 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
     }
     
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        /*
+        MARK: Replace the following line to your own frame setting for segmentView
+        */
         self.segmentView.frame = CGRect(x: self.margin, y: 50.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
     }
 }
