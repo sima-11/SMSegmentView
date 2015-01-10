@@ -1,5 +1,7 @@
 
-<div style="text-align:center"><img src ="/Screenshots/example_1.png" /></div>
+<p align="center">
+  <img src ="/Screenshots/example_1.png"/>
+</p>
 
 # SMSegmentView Description
 - Custom segment view for iOS 7 and above.
