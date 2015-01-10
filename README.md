@@ -4,6 +4,7 @@
 - Support both images and text.
 - More customised than UISegmentControl and easier to expand with new style.
 
+
 # How To Use
 #### Step 1
 Drag `SMSegmentView.swift` and `SMSegment.swift` into your Xcode project.
@@ -12,7 +13,7 @@ Drag `SMSegmentView.swift` and `SMSegment.swift` into your Xcode project.
 Initialise SMSegmentView:
 You can simply use `SMSegmentView(frame:)` to initialise your segment view by using the default properties. 
 But mostly, you may want to use `SMSegmentView(frame: seperatorColour: seperatorWidth: segmentProperties:)` to make it look more customised.
-`segmentProperties:` reads a `Dictionary<String, AnyObject>` value. You can find what key it supports on the top of `SMSegmentView` file.
+The parameter `segmentProperties:` reads a `Dictionary<String, AnyObject>` value. You can find what key it supports on the top of `SMSegmentView` file.
 
 E.g.
 ```
@@ -32,7 +33,9 @@ segmentView.addSegmentWithTitle("Segment 2", onSelectionImage: UIImage(named: "h
 segmentView.addSegmentWithTitle("Segment 3", onSelectionImage: UIImage(named: "globe_light"), offSelectionImage: UIImage(named: "globe"))
 ```
 
-##### More Info
+#### Optional Step
 You can programmatically select a segment by calling `selectSegmentAtIndex(index: Int)`
 
+
+# More Info
 The framework comes with a sample project for you.
