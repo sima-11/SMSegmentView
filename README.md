@@ -1,4 +1,5 @@
-![ScreenShot](/Screenshots/example_1.png)
+
+<div style="text-align:center"><img src ="/Screenshots/example_1.png" /></div>
 
 # SMSegmentView Description
 - Custom segment view for iOS 7 and above.
