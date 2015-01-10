@@ -4,7 +4,7 @@
 - Custom segment view for iOS 7 and above.
 - Written in Swift.
 - Support both images and text.
-- More customised than UISegmentControl and easier to expand with new style.
+- More customised than UISegmentedControl and easier to expand with new style.
 
 
 # How To Use
