@@ -43,8 +43,9 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
     // SMSegment Delegate
     func didSelectSegmentAtIndex(segmentIndex: Int) {
         /*
-          Implement what you want the app to do after the segment gets tapped.
+          Replace the following line to implement what you want the app to do after the segment gets tapped.
         */
+        println("Select segment at index: \(segmentIndex)")
     }
     
     override func supportedInterfaceOrientations() -> Int {
