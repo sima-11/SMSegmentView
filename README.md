@@ -1,3 +1,5 @@
+![ScreenShot](/Screenshots/example_1.png)
+
 # SMSegmentView Description
 - Custom segment view for iOS 7 and above.
 - Written in Swift.
