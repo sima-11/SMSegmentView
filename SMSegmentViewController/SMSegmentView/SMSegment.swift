@@ -24,7 +24,7 @@ class SMSegment: UIView {
         }
     }
     
-    var seperatorWidth: CGFloat
+    var separatorWidth: CGFloat
     
     // Segment Colour
     var onSelectionColour: UIColor = UIColor.darkGrayColor() {
@@ -132,9 +132,9 @@ class SMSegment: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(seperatorWidth: CGFloat, verticalMargin: CGFloat, onSelectionColour: UIColor, offSelectionColour: UIColor, onSelectionTextColour: UIColor, offSelectionTextColour: UIColor, titleFont: UIFont) {
+    init(separatorWidth: CGFloat, verticalMargin: CGFloat, onSelectionColour: UIColor, offSelectionColour: UIColor, onSelectionTextColour: UIColor, offSelectionTextColour: UIColor, titleFont: UIFont) {
         
-        self.seperatorWidth = seperatorWidth
+        self.separatorWidth = separatorWidth
         self.verticalMargin = verticalMargin
         self.onSelectionColour = onSelectionColour
         self.offSelectionColour = offSelectionColour

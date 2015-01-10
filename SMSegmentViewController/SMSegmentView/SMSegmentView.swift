@@ -44,16 +44,16 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         }
     }
     
-    // Segment Seperator
-    var seperatorColour: UIColor = UIColor.lightGrayColor() {
+    // Segment Separator
+    var separatorColour: UIColor = UIColor.lightGrayColor() {
         didSet {
             self.setNeedsDisplay()
         }
     }
-    var seperatorWidth: CGFloat = 1.0 {
+    var separatorWidth: CGFloat = 1.0 {
         didSet {
             for segment in self.segments {
-                segment.seperatorWidth = self.seperatorWidth
+                segment.separatorWidth = self.separatorWidth
             }
             self.updateFrameForSegments()
         }
@@ -116,9 +116,9 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         self.layer.masksToBounds = true
     }
     
-    init(frame: CGRect, seperatorColour: UIColor, seperatorWidth: CGFloat, segmentProperties: Dictionary<String, AnyObject>?) {
-        self.seperatorColour = seperatorColour
-        self.seperatorWidth = seperatorWidth
+    init(frame: CGRect, separatorColour: UIColor, separatorWidth: CGFloat, segmentProperties: Dictionary<String, AnyObject>?) {
+        self.separatorColour = separatorColour
+        self.separatorWidth = separatorWidth
         
         if let margin = segmentProperties?[keyContentVerticalMargin] as? NSNumber {
             self.segmentVerticalMargin = CGFloat(margin)
@@ -166,7 +166,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
     
     func addSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) {
         
-        let segment = SMSegment(seperatorWidth: self.seperatorWidth, verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
+        let segment = SMSegment(separatorWidth: self.separatorWidth, verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
         segment.index = self.segments.count
         self.segments.append(segment)
         self.updateFrameForSegments()
@@ -188,11 +188,11 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         
         let count = self.segments.count
         if count > 1 {
-            let segmentWidth = (self.frame.size.width - self.seperatorWidth*CGFloat(count-1)) / CGFloat(count)
+            let segmentWidth = (self.frame.size.width - self.separatorWidth*CGFloat(count-1)) / CGFloat(count)
             var originX:CGFloat = 0.0
             for segment in self.segments {
                 segment.frame = CGRect(x: originX, y: 0.0, width: segmentWidth, height: self.frame.size.height)
-                originX += segmentWidth + self.seperatorWidth
+                originX += segmentWidth + self.separatorWidth
             }
         }
         else {
@@ -227,28 +227,28 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         }
     }
     
-    // MARK: Drawing Segment Seperators
+    // MARK: Drawing Segment Separators
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        self.drawSeperatorWithContext(context)
+        self.drawSeparatorWithContext(context)
     }
     
-    func drawSeperatorWithContext(context: CGContextRef) {
+    func drawSeparatorWithContext(context: CGContextRef) {
         CGContextSaveGState(context)
         
         if self.segments.count > 1 {
             var path = CGPathCreateMutable()
-            var originX: CGFloat = self.segments[0].frame.size.width + self.seperatorWidth/2.0
+            var originX: CGFloat = self.segments[0].frame.size.width + self.separatorWidth/2.0
             for index in 1..<self.segments.count {
                 CGPathMoveToPoint(path, nil, originX, 0.0)
                 CGPathAddLineToPoint(path, nil, originX, self.frame.size.height)
                 CGContextAddPath(context, path)
                 
-                CGContextSetStrokeColorWithColor(context, self.seperatorColour.CGColor)
+                CGContextSetStrokeColorWithColor(context, self.separatorColour.CGColor)
                 
-                originX += self.segments[index].frame.width + self.seperatorWidth
+                originX += self.segments[index].frame.width + self.separatorWidth
             }
-            CGContextSetLineWidth(context, self.seperatorWidth)
+            CGContextSetLineWidth(context, self.separatorWidth)
             CGContextDrawPath(context, kCGPathStroke)
         }
         
