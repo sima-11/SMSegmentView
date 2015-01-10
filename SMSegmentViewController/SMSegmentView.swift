@@ -7,7 +7,9 @@
 
 import UIKit
 
-
+/*
+  Keys for segment properties
+*/
 let keyContentVerticalMargin = "VerticalMargin"
 let keySegmentOnSelectionColour = "OnSelectionBackgroundColour"
 let keySegmentOffSelectionColour = "OffSelectionBackgroundColour"
@@ -216,13 +218,12 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         }
     }
     
+    // MARK: Drawing Segment Seperators
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         self.drawSeperatorWithContext(context)
     }
     
-    
-    // MARK: Drawings
     func drawSeperatorWithContext(context: CGContextRef) {
         CGContextSaveGState(context)
         
