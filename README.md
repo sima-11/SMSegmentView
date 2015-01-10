@@ -23,11 +23,13 @@ var segmentView = SMSegmentView(frame: CGRect(x: 10.0, y: 50.0, width: 300.0, he
 ```
 
 #### Step 3
-Assign delegate for the instance of SMSegmentView
+Assign delegate for the instance of SMSegmentView.
+
 E.g. `segmentView.delegate = self`
 
 #### Step 4
-Add segments to your segment view
+Add segments to your segment view.
+
 E.g.:
 ```
 segmentView.addSegmentWithTitle("Segment 1", onSelectionImage: UIImage(named: "target_light"), offSelectionImage: UIImage(named: "target"))
@@ -36,7 +38,7 @@ segmentView.addSegmentWithTitle("Segment 3", onSelectionImage: UIImage(named: "g
 ```
 
 #### Optional Step
-You can programmatically select a segment by calling `selectSegmentAtIndex(index: Int)`
+You can programmatically select a segment by calling `selectSegmentAtIndex(index: Int)`.
 
 
 # More Info
