@@ -1,10 +1,10 @@
 <p align="center"><img src ="/Screenshots/example_1.png"/></p>
 
 # SMSegmentView Description
-- Custom segment view for iOS 7 and above.
+- Custom segmented control for iOS 7 and above.
 - Written in Swift.
 - Support both images and text.
-- More customised than UISegmentedControl and easier to expand with new style.
+- More customisible than UISegmentedControl and easier to expand with new style.
 
 
 # How To Use
