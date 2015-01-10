@@ -45,5 +45,3 @@ The framework comes with a sample project for you.
 # Screenshots
 <p align="center"><img src ="/Screenshots/example_2.png"/></p>
 <p align="center"><img src ="/Screenshots/example_3.png"/></p>
-<p align="center"><img src ="/Screenshots/example_4.png"/></p>
-<p align="center"><img src ="/Screenshots/example_5.png"/></p>
