@@ -184,7 +184,7 @@ class SMSegment: UIView {
         if self.onSelectionImage != nil || self.offSelectionImage != nil {
             // Set imageView as a square
             imageViewFrame.size.width = self.frame.size.height - self.verticalMargin*2
-            distanceBetween = 3.0
+            distanceBetween = 5.0
         }
         
         // If there's no text, align imageView centred

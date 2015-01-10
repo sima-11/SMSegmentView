@@ -14,25 +14,25 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
         /*
           Init SMsegmentView
           Use a Dictionary here to set its properties.
           Each property has its own default value, so you only need to specify for those you are interested.
         */
-        self.segmentView = SMSegmentView(frame: CGRect(x: self.margin, y: 50.0, width: self.view.frame.size.width - self.margin*2, height: 40.0), seperatorColour: UIColor.blueColor(), seperatorWidth: 1.0, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor.blackColor(), keySegmentOffSelectionColour: UIColor.greenColor(), keyContentVerticalMargin: 5.0])
+        self.segmentView = SMSegmentView(frame: CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0), seperatorColour: UIColor(white: 0.95, alpha: 0.3), seperatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
         
         self.segmentView.delegate = self
         
-        // Original iOS style of border
         self.segmentView.layer.cornerRadius = 5.0
-        self.segmentView.layer.borderColor = UIColor.blueColor().CGColor
+        self.segmentView.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).CGColor
         self.segmentView.layer.borderWidth = 1.0
         
         // Add segments
-        self.segmentView.addSegmentWithTitle("Segment A", onSelectionImage: UIImage(named: "target_light"), offSelectionImage: UIImage(named: "target"))
-        self.segmentView.addSegmentWithTitle("Segment B", onSelectionImage: UIImage(named: "handbag_light"), offSelectionImage: UIImage(named: "handbag"))
-        self.segmentView.addSegmentWithTitle("Segment C", onSelectionImage: UIImage(named: "globe_light"), offSelectionImage: UIImage(named: "globe"))
+        self.segmentView.addSegmentWithTitle("Clip", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
+        self.segmentView.addSegmentWithTitle("Blub", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
+        self.segmentView.addSegmentWithTitle("Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
         
         // Set segment with index 0 as selected by default
         segmentView.selectSegmentAtIndex(0)
@@ -55,7 +55,7 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         /*
         MARK: Replace the following line to your own frame setting for segmentView.
         */
-        self.segmentView.frame = CGRect(x: self.margin, y: 50.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
+        self.segmentView.frame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
     }
 }
 

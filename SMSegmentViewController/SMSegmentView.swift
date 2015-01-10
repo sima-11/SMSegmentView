@@ -10,12 +10,21 @@ import UIKit
 /*
   Keys for segment properties
 */
+
+// This is mainly for the top/bottom margin of the imageView
 let keyContentVerticalMargin = "VerticalMargin"
+
+// The colour when the segment is under selected/unselected
 let keySegmentOnSelectionColour = "OnSelectionBackgroundColour"
 let keySegmentOffSelectionColour = "OffSelectionBackgroundColour"
+
+// The colour of the text in the segment for the segment is under selected/unselected
 let keySegmentOnSelectionTextColour = "OnSelectionTextColour"
 let keySegmentOffSelectionTextColour = "OffSelectionTextColour"
+
+// The font of the text in the segment
 let keySegmentTitleFont = "TitleFont"
+
 
 protocol SMSegmentViewDelegate {
     func didSelectSegmentAtIndex(segmentIndex: Int)
