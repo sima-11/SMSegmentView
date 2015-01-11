@@ -58,7 +58,7 @@ class SMSegment: UIView {
             self.label.text = self.title
             
             if let titleText = self.label.text as NSString? {
-                self.labelWidth = titleText.boundingRectWithSize(CGSize(width: self.frame.size.width + 1.0, height: self.frame.size.height), options:NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName: self.label.font], context: nil).size.width
+                self.labelWidth = titleText.boundingRectWithSize(CGSize(width: self.frame.size.width, height: self.frame.size.height), options:NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName: self.label.font], context: nil).size.width
             }
             else {
                 self.labelWidth = 0.0
@@ -197,8 +197,6 @@ class SMSegment: UIView {
         }
         
         self.imageView.frame = imageViewFrame
-        
-        self.labelWidth = min(self.labelWidth, self.frame.size.width - self.imageView.frame.size.width - distanceBetween)
         
         self.label.frame = CGRectMake(imageViewFrame.origin.x + imageViewFrame.size.width + distanceBetween, self.verticalMargin, self.labelWidth, self.frame.size.height - self.verticalMargin * 2)
     }

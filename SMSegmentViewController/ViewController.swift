@@ -59,7 +59,7 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         if toInterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || toInterfaceOrientation == UIInterfaceOrientation.LandscapeRight {
             self.segmentView.organiseMode = .SegmentOrganiseVertical
             self.segmentView.segmentVerticalMargin = 25.0
-            self.segmentView.frame = CGRect(x: self.margin, y: 100.0, width: 80.0, height: 220.0)
+            self.segmentView.frame = CGRect(x: self.view.frame.size.width/2 - 40.0, y: 100.0, width: 80.0, height: 220.0)
         }
         else {
             self.segmentView.organiseMode = .SegmentOrganiseHorizontal
