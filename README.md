@@ -38,7 +38,11 @@ segmentView.addSegmentWithTitle("Segment 3", onSelectionImage: UIImage(named: "g
 ```
 
 #### Optional Step
-You can programmatically select a segment by calling `selectSegmentAtIndex(index: Int)`.
+You can programmatically select/deselect a segment by calling `selectSegmentAtIndex(index: Int)`.
+
+# Support Vertical Mode
+You can organise all segments vertically by setting the `segmentMode` as `.SegmentOrganiseVertical`. It is set to `.SegmentOrganiseHorizontal` by default.
+E.g. `segmentView.segmentMode = .SegmentOrganiseVertical`
 
 
 # More Info
