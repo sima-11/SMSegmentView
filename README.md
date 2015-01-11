@@ -44,6 +44,7 @@ You can programmatically select/deselect a segment by calling `selectSegmentAtIn
 You can organise all segments vertically by setting the `segmentMode` as `.SegmentOrganiseVertical`. It is set to `.SegmentOrganiseHorizontal` by default.
 E.g. `segmentView.segmentMode = .SegmentOrganiseVertical`
 
+<p align="center"><img src ="/Screenshots/example_vertical.png"/></p>
 
 # More Info
 The framework comes with a sample project for you.
