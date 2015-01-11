@@ -4,6 +4,7 @@
 - Custom segmented control for iOS 7 and above.
 - Written in Swift.
 - Support both images and text.
+- Support vertically organise segments
 - More customisible than UISegmentedControl and easier to expand with new style.
 
 
