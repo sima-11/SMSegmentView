@@ -26,6 +26,12 @@ let keySegmentOffSelectionTextColour = "OffSelectionTextColour"
 let keySegmentTitleFont = "TitleFont"
 
 
+enum SegmentOrganiseMode: Int {
+    case SegmentOrganiseHorizontal = 0
+    case SegmentOrganiseVertical
+}
+
+
 protocol SMSegmentViewDelegate {
     func didSelectSegmentAtIndex(segmentIndex: Int)
 }
@@ -35,6 +41,12 @@ class SMSegmentView: UIView, SMSegmentDelegate {
     
     var indexOfSelectedSegment = NSNotFound
     var numberOfSegments = 0
+    
+    var organiseMode: SegmentOrganiseMode = SegmentOrganiseMode.SegmentOrganiseHorizontal {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
     
     var segmentVerticalMargin: CGFloat = 5.0 {
         didSet {
@@ -188,11 +200,21 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         
         let count = self.segments.count
         if count > 1 {
-            let segmentWidth = (self.frame.size.width - self.separatorWidth*CGFloat(count-1)) / CGFloat(count)
-            var originX:CGFloat = 0.0
-            for segment in self.segments {
-                segment.frame = CGRect(x: originX, y: 0.0, width: segmentWidth, height: self.frame.size.height)
-                originX += segmentWidth + self.separatorWidth
+            if self.organiseMode == SegmentOrganiseMode.SegmentOrganiseHorizontal {
+                let segmentWidth = (self.frame.size.width - self.separatorWidth*CGFloat(count-1)) / CGFloat(count)
+                var originX: CGFloat = 0.0
+                for segment in self.segments {
+                    segment.frame = CGRect(x: originX, y: 0.0, width: segmentWidth, height: self.frame.size.height)
+                    originX += segmentWidth + self.separatorWidth
+                }
+            }
+            else {
+                let segmentHeight = (self.frame.size.height - self.separatorWidth*CGFloat(count-1)) / CGFloat(count)
+                var originY: CGFloat = 0.0
+                for segment in self.segments {
+                    segment.frame = CGRect(x: 0.0, y: originY, width: self.frame.size.width, height: segmentHeight)
+                    originY += segmentHeight + self.separatorWidth
+                }
             }
         }
         else {
@@ -238,16 +260,28 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         
         if self.segments.count > 1 {
             var path = CGPathCreateMutable()
-            var originX: CGFloat = self.segments[0].frame.size.width + self.separatorWidth/2.0
-            for index in 1..<self.segments.count {
-                CGPathMoveToPoint(path, nil, originX, 0.0)
-                CGPathAddLineToPoint(path, nil, originX, self.frame.size.height)
-                CGContextAddPath(context, path)
-                
-                CGContextSetStrokeColorWithColor(context, self.separatorColour.CGColor)
-                
-                originX += self.segments[index].frame.width + self.separatorWidth
+            
+            if self.organiseMode == SegmentOrganiseMode.SegmentOrganiseHorizontal {
+                var originX: CGFloat = self.segments[0].frame.size.width + self.separatorWidth/2.0
+                for index in 1..<self.segments.count {
+                    CGPathMoveToPoint(path, nil, originX, 0.0)
+                    CGPathAddLineToPoint(path, nil, originX, self.frame.size.height)
+                    
+                    originX += self.segments[index].frame.width + self.separatorWidth
+                }
             }
+            else {
+                var originY: CGFloat = self.segments[0].frame.size.height + self.separatorWidth/2.0
+                for index in 1..<self.segments.count {
+                    CGPathMoveToPoint(path, nil, 0.0, originY)
+                    CGPathAddLineToPoint(path, nil, self.frame.size.width, originY)
+                    
+                    originY += self.segments[index].frame.height + self.separatorWidth
+                }
+            }
+            
+            CGContextAddPath(context, path)
+            CGContextSetStrokeColorWithColor(context, self.separatorColour.CGColor)
             CGContextSetLineWidth(context, self.separatorWidth)
             CGContextDrawPath(context, kCGPathStroke)
         }

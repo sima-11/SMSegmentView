@@ -35,7 +35,7 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         self.segmentView.addSegmentWithTitle("Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
         
         // Set segment with index 0 as selected by default
-        segmentView.selectSegmentAtIndex(0)
+        //segmentView.selectSegmentAtIndex(0)
         
         self.view.addSubview(self.segmentView)
     }
@@ -56,7 +56,16 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         /*
         MARK: Replace the following line to your own frame setting for segmentView.
         */
-        self.segmentView.frame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
+        if toInterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || toInterfaceOrientation == UIInterfaceOrientation.LandscapeRight {
+            self.segmentView.organiseMode = .SegmentOrganiseVertical
+            self.segmentView.segmentVerticalMargin = 25.0
+            self.segmentView.frame = CGRect(x: self.margin, y: 100.0, width: 80.0, height: 220.0)
+        }
+        else {
+            self.segmentView.organiseMode = .SegmentOrganiseHorizontal
+            self.segmentView.segmentVerticalMargin = 10.0
+            self.segmentView.frame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
+        }
     }
 }
 
