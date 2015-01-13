@@ -50,6 +50,7 @@ E.g. `segmentView.segmentMode = .SegmentOrganiseVertical`
 
 # More Info
 The framework comes with a sample project for you.
+This <a href='http://keeptheseinmind.blogspot.co.uk/2015/01/custom-segmentedcontrol-in-swift.html'>tutorial</a> may give you some idea how to expand this framework a little bit
 
 # Screenshots
 <p align="center"><img src ="/Screenshots/example_2.png"/></p>
