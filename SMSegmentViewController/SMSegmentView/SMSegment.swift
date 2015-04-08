@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SMSegmentDelegate {
+protocol SMSegmentDelegate: class {
     func selectSegment(segment: SMSegment)
 }
 
 class SMSegment: UIView {
     
-    var delegate: SMSegmentDelegate?
+    weak var delegate: SMSegmentDelegate?
     
     private(set) var isSelected: Bool = false
     private var shouldResponse: Bool!

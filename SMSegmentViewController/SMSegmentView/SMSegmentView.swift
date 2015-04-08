@@ -32,12 +32,12 @@ enum SegmentOrganiseMode: Int {
 }
 
 
-protocol SMSegmentViewDelegate {
+protocol SMSegmentViewDelegate: class {
     func didSelectSegmentAtIndex(segmentIndex: Int)
 }
 
 class SMSegmentView: UIView, SMSegmentDelegate {
-    var delegate: SMSegmentViewDelegate?
+    weak var delegate: SMSegmentViewDelegate?
     
     var indexOfSelectedSegment = NSNotFound
     var numberOfSegments = 0
