@@ -33,7 +33,7 @@ enum SegmentOrganiseMode: Int {
 
 
 protocol SMSegmentViewDelegate: class {
-    func didSelectSegmentAtIndex(segmentIndex: Int)
+    func segmentView(segmentView: SMSegmentView, didSelectSegmentAtIndex index: Int)
 }
 
 class SMSegmentView: UIView, SMSegmentDelegate {
@@ -232,7 +232,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         }
         self.indexOfSelectedSegment = segment.index
         segment.setSelected(true)
-        self.delegate?.didSelectSegmentAtIndex(segment.index)
+        self.delegate?.segmentView(self, didSelectSegmentAtIndex: segment.index)
     }
     
     // MARK: Actions
