@@ -202,7 +202,7 @@ class SMSegment: UIView {
     }
     
     // MARK: Handle touch
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
         
         if self.isSelected == false {
@@ -211,7 +211,7 @@ class SMSegment: UIView {
         }
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
         
         self.delegate?.selectSegment(self)
