@@ -132,7 +132,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         self.separatorColour = separatorColour
         self.separatorWidth = separatorWidth
         
-        if let margin = segmentProperties?[keyContentVerticalMargin] as? NSNumber {
+        if let margin = segmentProperties?[keyContentVerticalMargin] as? Float {
             self.segmentVerticalMargin = CGFloat(margin)
         }
         
