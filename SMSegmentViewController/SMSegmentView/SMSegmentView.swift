@@ -118,7 +118,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
     
     private var segments: Array<SMSegment> = Array()
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -251,7 +251,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
     
     // MARK: Drawing Segment Separators
     override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()!
         self.drawSeparatorWithContext(context)
     }
     
@@ -259,7 +259,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
         CGContextSaveGState(context)
         
         if self.segments.count > 1 {
-            var path = CGPathCreateMutable()
+            let path = CGPathCreateMutable()
             
             if self.organiseMode == SegmentOrganiseMode.SegmentOrganiseHorizontal {
                 var originX: CGFloat = self.segments[0].frame.size.width + self.separatorWidth/2.0
@@ -283,7 +283,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
             CGContextAddPath(context, path)
             CGContextSetStrokeColorWithColor(context, self.separatorColour.CGColor)
             CGContextSetLineWidth(context, self.separatorWidth)
-            CGContextDrawPath(context, kCGPathStroke)
+            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
         }
         
         CGContextRestoreGState(context)

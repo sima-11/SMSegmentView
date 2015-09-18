@@ -45,11 +45,11 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         /*
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */
-        println("Select segment at index: \(index)")
+        print("Select segment at index: \(index)")
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.All.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
     }
     
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
