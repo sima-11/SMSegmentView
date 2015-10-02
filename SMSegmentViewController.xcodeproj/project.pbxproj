@@ -27,6 +27,9 @@
 		6957D72E1A5A997A007AC81B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6957D72D1A5A997A007AC81B /* Images.xcassets */; };
 		6957D7311A5A997A007AC81B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6957D72F1A5A997A007AC81B /* LaunchScreen.xib */; };
 		6957D73D1A5A997A007AC81B /* SMSegmentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957D73C1A5A997A007AC81B /* SMSegmentViewControllerTests.swift */; };
+		C19086811BBCBCF900DCF698 /* SMBasicSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086801BBCBCF900DCF698 /* SMBasicSegmentView.swift */; settings = {ASSET_TAGS = (); }; };
+		C19086831BBCBD1300DCF698 /* SMBasicSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086821BBCBD1300DCF698 /* SMBasicSegment.swift */; settings = {ASSET_TAGS = (); }; };
+		C19086851BBCC92A00DCF698 /* SMAlphaImageSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086841BBCC92A00DCF698 /* SMAlphaImageSegment.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		6957D7361A5A997A007AC81B /* SMSegmentViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMSegmentViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6957D73B1A5A997A007AC81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6957D73C1A5A997A007AC81B /* SMSegmentViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSegmentViewControllerTests.swift; sourceTree = "<group>"; };
+		C19086801BBCBCF900DCF698 /* SMBasicSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMBasicSegmentView.swift; sourceTree = "<group>"; };
+		C19086821BBCBD1300DCF698 /* SMBasicSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMBasicSegment.swift; sourceTree = "<group>"; };
+		C19086841BBCC92A00DCF698 /* SMAlphaImageSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlphaImageSegment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,9 @@
 			children = (
 				2346DF371A619FC200DEFA20 /* SMSegmentView.swift */,
 				2346DF361A619FC200DEFA20 /* SMSegment.swift */,
+				C19086801BBCBCF900DCF698 /* SMBasicSegmentView.swift */,
+				C19086821BBCBD1300DCF698 /* SMBasicSegment.swift */,
+				C19086841BBCC92A00DCF698 /* SMAlphaImageSegment.swift */,
 			);
 			path = SMSegmentView;
 			sourceTree = "<group>";
@@ -288,6 +297,9 @@
 				2346DF391A619FC200DEFA20 /* SMSegmentView.swift in Sources */,
 				2346DF381A619FC200DEFA20 /* SMSegment.swift in Sources */,
 				6957D7271A5A997A007AC81B /* AppDelegate.swift in Sources */,
+				C19086831BBCBD1300DCF698 /* SMBasicSegment.swift in Sources */,
+				C19086811BBCBCF900DCF698 /* SMBasicSegmentView.swift in Sources */,
+				C19086851BBCC92A00DCF698 /* SMAlphaImageSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
