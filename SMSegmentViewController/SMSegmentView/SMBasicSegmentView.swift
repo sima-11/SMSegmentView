@@ -20,7 +20,7 @@ public protocol SMSegmentViewDelegate: class {
 }
 
 public class SMBasicSegmentView: UIView {
-    var segments: [SMBasicSegment] = [] {
+    public var segments: [SMBasicSegment] = [] {
         didSet {
             var i=0;
             for segment in segments {
@@ -33,14 +33,14 @@ public class SMBasicSegmentView: UIView {
 
         }
     }
-    weak var delegate: SMSegmentViewDelegate?
+    public weak var delegate: SMSegmentViewDelegate?
     
-    private(set) var indexOfSelectedSegment: Int = NSNotFound
+    public private(set) var indexOfSelectedSegment: Int = NSNotFound
     var numberOfSegments: Int {get {
         return segments.count
         }}
     
-    @IBInspectable var vertical: Bool = false{
+    @IBInspectable public var vertical: Bool = false{
         didSet {
             let mode = vertical ? SegmentOrganiseMode.SegmentOrganiseVertical : SegmentOrganiseMode.SegmentOrganiseHorizontal
             self.orientationChangedTo(mode)
@@ -48,12 +48,12 @@ public class SMBasicSegmentView: UIView {
     }
     
     // Segment Separator
-    @IBInspectable var separatorColour: UIColor = UIColor.lightGrayColor() {
+    @IBInspectable public var separatorColour: UIColor = UIColor.lightGrayColor() {
         didSet {
             self.setNeedsDisplay()
         }
     }
-    @IBInspectable var separatorWidth: CGFloat = 1.0 {
+    @IBInspectable public var separatorWidth: CGFloat = 1.0 {
         didSet {
             self.updateFrameForSegments()
         }
@@ -72,7 +72,7 @@ public class SMBasicSegmentView: UIView {
         setNeedsDisplay()
     }
     
-    func updateFrameForSegments() {
+    public func updateFrameForSegments() {
         if self.segments.count == 0 {
             return
         }
@@ -104,7 +104,7 @@ public class SMBasicSegmentView: UIView {
     }
     
     
-    func drawSeparatorWithContext(context: CGContextRef) {
+    public func drawSeparatorWithContext(context: CGContextRef) {
         CGContextSaveGState(context)
         
         if self.segments.count > 1 {
