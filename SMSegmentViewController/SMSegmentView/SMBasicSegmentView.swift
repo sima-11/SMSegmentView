@@ -59,10 +59,9 @@ public class SMBasicSegmentView: UIView {
         }
     }
     
-    override public var frame: CGRect {
-        didSet {
-            self.updateFrameForSegments()
-        }
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.updateFrameForSegments()
     }
     
     public func orientationChangedTo(mode: SegmentOrganiseMode){
