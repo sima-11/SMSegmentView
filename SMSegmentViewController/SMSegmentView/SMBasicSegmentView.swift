@@ -19,7 +19,7 @@ public protocol SMSegmentViewDelegate: class {
     func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int)
 }
 
-public class SMBasicSegmentView: UIView {
+public class SMBasicSegmentView: UIControl {
     public var segments: [SMBasicSegment] = [] {
         didSet {
             var i=0;
@@ -35,8 +35,13 @@ public class SMBasicSegmentView: UIView {
     }
     public weak var delegate: SMSegmentViewDelegate?
     
-    public private(set) var indexOfSelectedSegment: Int = NSNotFound
-    var numberOfSegments: Int {get {
+
+    public var selectedSegmentIndex: Int = UISegmentedControlNoSegment{
+        didSet{
+            if selectedSegmentIndex != oldValue { self.selectSegmentAtIndex(selectedSegmentIndex) }
+        }
+    }
+    public var numberOfSegments: Int {get {
         return segments.count
         }}
     
@@ -146,23 +151,34 @@ public class SMBasicSegmentView: UIView {
     
     // MARK: Actions
     public func selectSegmentAtIndex(index: Int) {
-        assert(index >= 0 && index < self.segments.count, "Index at \(index) is out of bounds")
+        guard self.selectedSegmentIndex != index else {return}
+        guard (index >= 0 && index < self.segments.count) || (index == UISegmentedControlNoSegment) else {
+            NSLog("Index at \(index) is out of bounds")
+            return
+        }
+        defer {
+            self.sendActionsForControlEvents(.ValueChanged)
+        }
         
-        if self.indexOfSelectedSegment != NSNotFound {
-            let previousSelectedSegment = self.segments[self.indexOfSelectedSegment]
+        if self.selectedSegmentIndex != UISegmentedControlNoSegment {
+            let previousSelectedSegment = self.segments[self.selectedSegmentIndex]
             previousSelectedSegment.setSelected(false, inView: self)
         }
-        self.indexOfSelectedSegment = index
+        selectedSegmentIndex = index
+        if index == UISegmentedControlNoSegment {
+            return
+        }
+        
         let segment = self.segments[index]
         segment.setSelected(true, inView: self)
         self.delegate?.segmentView(self, didSelectSegmentAtIndex: index)
     }
     
     public func deselectSegment() {
-        if self.indexOfSelectedSegment != NSNotFound {
-            let segment = self.segments[self.indexOfSelectedSegment]
+        if self.selectedSegmentIndex != UISegmentedControlNoSegment {
+            let segment = self.segments[self.selectedSegmentIndex]
             segment.setSelected(false, inView: self)
-            self.indexOfSelectedSegment = NSNotFound
+            self.selectedSegmentIndex = NSNotFound
         }
     }
     
