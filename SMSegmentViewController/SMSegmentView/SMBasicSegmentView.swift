@@ -34,13 +34,22 @@ public class SMBasicSegmentView: UIControl {
         }
     }
     public weak var delegate: SMSegmentViewDelegate?
-    
 
     public var selectedSegmentIndex: Int = UISegmentedControlNoSegment{
         didSet{
             if selectedSegmentIndex != oldValue { self.selectSegmentAtIndex(selectedSegmentIndex) }
         }
     }
+    //Make it dissapear in one of the next versions
+    @available(*, deprecated=1.2.0)
+    public var indexOfSelectedSegment: Int {
+        get { return selectedSegmentIndex == UISegmentedControlNoSegment ? NSNotFound : selectedSegmentIndex }
+        set {
+            if indexOfSelectedSegment == NSNotFound { selectedSegmentIndex = UISegmentedControlNoSegment }
+            else { selectedSegmentIndex = indexOfSelectedSegment }
+        }
+    }
+    
     public var numberOfSegments: Int {get {
         return segments.count
         }}
@@ -151,7 +160,6 @@ public class SMBasicSegmentView: UIControl {
     
     // MARK: Actions
     public func selectSegmentAtIndex(index: Int) {
-        guard self.selectedSegmentIndex != index else {return}
         guard (index >= 0 && index < self.segments.count) || (index == UISegmentedControlNoSegment) else {
             NSLog("Index at \(index) is out of bounds")
             return

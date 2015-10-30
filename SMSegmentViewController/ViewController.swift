@@ -42,6 +42,7 @@ class ViewController: UIViewController {
         
         // Set segment with index 0 as selected by default
         //segmentView.selectSegmentAtIndex(0)
+        segmentView.indexOfSelectedSegment = 0
         self.view.addSubview(view)
         
         
