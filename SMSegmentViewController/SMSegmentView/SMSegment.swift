@@ -7,34 +7,30 @@
 
 import UIKit
 
-protocol SMSegmentDelegate: class {
-    func selectSegment(segment: SMSegment)
-}
-
-class SMSegment: UIView {
+public class SMSegment: SMBasicSegment {
     
-    weak var delegate: SMSegmentDelegate?
-    
-    private(set) var isSelected: Bool = false
-    private var shouldResponse: Bool!
-    var index: Int = 0
-    var verticalMargin: CGFloat = 5.0 {
+    // UI Elements
+    override public var frame: CGRect {
         didSet {
             self.resetContentFrame()
         }
     }
     
-    var separatorWidth: CGFloat
-    
+    public var verticalMargin: CGFloat = 5.0 {
+        didSet {
+            self.resetContentFrame()
+        }
+    }
+        
     // Segment Colour
-    var onSelectionColour: UIColor = UIColor.darkGrayColor() {
+    public var onSelectionColour: UIColor = UIColor.darkGrayColor() {
         didSet {
             if self.isSelected == true {
                 self.backgroundColor = self.onSelectionColour
             }
         }
     }
-    var offSelectionColour: UIColor = UIColor.whiteColor() {
+    public var offSelectionColour: UIColor = UIColor.whiteColor() {
         didSet {
             if self.isSelected == false {
                 self.backgroundColor = self.offSelectionColour
@@ -53,7 +49,7 @@ class SMSegment: UIView {
     }
     
     // Segment Title Text & Colour & Font
-    var title: String? {
+    public var title: String? {
         didSet {
             self.label.text = self.title
             
@@ -67,21 +63,21 @@ class SMSegment: UIView {
             self.resetContentFrame()
         }
     }
-    var onSelectionTextColour: UIColor = UIColor.whiteColor() {
+    public var onSelectionTextColour: UIColor = UIColor.whiteColor() {
         didSet {
             if self.isSelected == true {
                 self.label.textColor = self.onSelectionTextColour
             }
         }
     }
-    var offSelectionTextColour: UIColor = UIColor.darkGrayColor() {
+    public var offSelectionTextColour: UIColor = UIColor.darkGrayColor() {
         didSet {
             if self.isSelected == false {
                 self.label.textColor = self.offSelectionTextColour
             }
         }
     }
-    var titleFont: UIFont = UIFont.systemFontOfSize(17.0) {
+    public var titleFont: UIFont = UIFont.systemFontOfSize(17.0) {
         didSet {
             self.label.font = self.titleFont
             
@@ -97,7 +93,7 @@ class SMSegment: UIView {
     }
     
     // Segment Image
-    var onSelectionImage: UIImage? {
+    public var onSelectionImage: UIImage? {
         didSet {
             if self.onSelectionImage != nil {
                 self.resetContentFrame()
@@ -107,7 +103,7 @@ class SMSegment: UIView {
             }
         }
     }
-    var offSelectionImage: UIImage? {
+    public var offSelectionImage: UIImage? {
         didSet {
             if self.offSelectionImage != nil {
                 self.resetContentFrame()
@@ -118,23 +114,17 @@ class SMSegment: UIView {
         }
     }
     
-    // UI Elements
-    override var frame: CGRect {
-        didSet {
-            self.resetContentFrame()
-        }
-    }
+   
     private var imageView: UIImageView = UIImageView()
     private var label: UILabel = UILabel()
     private var labelWidth: CGFloat = 0.0
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(separatorWidth: CGFloat, verticalMargin: CGFloat, onSelectionColour: UIColor, offSelectionColour: UIColor, onSelectionTextColour: UIColor, offSelectionTextColour: UIColor, titleFont: UIFont) {
+    public init(verticalMargin: CGFloat, onSelectionColour: UIColor, offSelectionColour: UIColor, onSelectionTextColour: UIColor, offSelectionTextColour: UIColor, titleFont: UIFont) {
         
-        self.separatorWidth = separatorWidth
         self.verticalMargin = verticalMargin
         self.onSelectionColour = onSelectionColour
         self.offSelectionColour = offSelectionColour
@@ -145,6 +135,8 @@ class SMSegment: UIView {
         super.init(frame: CGRectZero)
         self.setupUIElements()
     }
+    
+    
     
     func setupUIElements() {
         
@@ -159,21 +151,6 @@ class SMSegment: UIView {
         self.addSubview(self.label)
     }
     
-    // MARK: Selections
-    func setSelected(selected: Bool) {
-        if selected == true {
-            self.isSelected = true
-            self.backgroundColor = self.onSelectionColour
-            self.label.textColor = self.onSelectionTextColour
-            self.imageView.image = self.onSelectionImage
-        }
-        else {
-            self.isSelected = false
-            self.backgroundColor = self.offSelectionColour
-            self.label.textColor = self.offSelectionTextColour
-            self.imageView.image = self.offSelectionImage
-        }
-    }
     
     // MARK: Update Frame
     private func resetContentFrame() {
@@ -201,19 +178,28 @@ class SMSegment: UIView {
         self.label.frame = CGRectMake(imageViewFrame.origin.x + imageViewFrame.size.width + distanceBetween, self.verticalMargin, self.labelWidth, self.frame.size.height - self.verticalMargin * 2)
     }
     
+    // MARK: Selections
+    override public func setSelected(selected: Bool, inView view: SMBasicSegmentView) {
+        super.setSelected(selected, inView: view)
+        if selected {
+            self.backgroundColor = self.onSelectionColour
+            self.label.textColor = self.onSelectionTextColour
+            self.imageView.image = self.onSelectionImage
+        }
+        else {
+            self.backgroundColor = self.offSelectionColour
+            self.label.textColor = self.offSelectionTextColour
+            self.imageView.image = self.offSelectionImage
+        }
+    }
+    
     // MARK: Handle touch
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public  func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
         
         if self.isSelected == false {
-            self.shouldResponse = true
             self.backgroundColor = self.willOnSelectionColour
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesEnded(touches, withEvent: event)
-        
-        self.delegate?.selectSegment(self)
-    }
 }
