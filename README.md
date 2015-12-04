@@ -7,6 +7,9 @@
 - Support vertically organise segments
 - More customisible than UISegmentedControl and easier to expand with new style.
 
+#### For CocoaPods User
+It seems when using Swift, CocoaPods won't accept frameworks which support iOS version under 8. So if you would like to support iOS 7, you might have to add this framework manually. 
+
 
 # How To Use
 #### Step 1
