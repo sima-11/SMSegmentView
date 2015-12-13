@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, SMSegmentViewDelegate {
+class ViewController: UIViewController {
     
     var segmentView: SMSegmentView!
     var alphaSegmentView: SMBasicSegmentView!
@@ -26,8 +26,8 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         
         self.segmentView = SMSegmentView(frame: segmentFrame, separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: Float(10.0)])
         
-        self.segmentView.delegate = self
-        
+        //self.segmentView.delegate = self
+        self.segmentView.addTarget(self, action: "segmentView:", forControlEvents: .ValueChanged)
         self.segmentView.backgroundColor = UIColor.clearColor()
         
         self.segmentView.layer.cornerRadius = 5.0
@@ -42,6 +42,7 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         
         // Set segment with index 0 as selected by default
         //segmentView.selectSegmentAtIndex(0)
+        segmentView.indexOfSelectedSegment = 0
         self.view.addSubview(view)
         
         
@@ -64,12 +65,12 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         self.view.addSubview(self.alphaSegmentView)
     }
 
-    // SMSegment Delegate
-    func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
+    // SMSegment selector
+    func segmentView(segmentView: SMBasicSegmentView) {
         /*
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */
-        print("Select segment at index: \(index)")
+        print("Select segment at index: \(segmentView.selectedSegmentIndex)")
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
