@@ -80,7 +80,9 @@ public class SMSegmentView: SMBasicSegmentView {
     }
         
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        self.backgroundColor = UIColor.clearColor()
+        self.layer.masksToBounds = true
     }
     
     override public init(frame: CGRect) {
