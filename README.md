@@ -10,7 +10,7 @@
 #### For CocoaPods User
 Add `pod 'SMSegmentView', '~> 1.1'` to Podfile.
 
-<b>Notice:</b> It seems when using Swift, CocoaPods won't accept frameworks target below iOS 8. So if you would like to support iOS 7, you might have to add this framework manually. 
+<b>Notice:</b> It seems when using Swift, CocoaPods won't accept frameworks target below iOS 8. So if you would like to support iOS 7, you might have to add this framework manually.
 
 
 # How To Use
@@ -19,7 +19,7 @@ Drag `SMSegmentView.swift` and `SMSegment.swift` into your Xcode project.
 
 #### Step 2
 Initialise SMSegmentView:
-You can simply use `SMSegmentView(frame:)` to initialise your segment view by using the default properties. 
+You can simply use `SMSegmentView(frame:)` to initialise your segment view by using the default properties.
 But mostly, you may want to use `SMSegmentView(frame: seperatorColour: seperatorWidth: segmentProperties:)` to make it look more customised.
 The parameter `segmentProperties:` reads a `Dictionary<String, AnyObject>` value. You can find what key it supports on the top of `SMSegmentView` file.
 
@@ -47,9 +47,9 @@ segmentView.addSegmentWithTitle("Segment 3", onSelectionImage: UIImage(named: "g
 You can programmatically select/deselect a segment by calling `selectSegmentAtIndex(index: Int)`.
 
 # Support Vertical Mode
-You can organise all segments vertically by setting the `segmentMode` as `.SegmentOrganiseVertical`. It is set to `.SegmentOrganiseHorizontal` by default.
+You can organize all segments vertically by setting the `vertical` as `true`. It is set to `false` by default.
 
-E.g. `segmentView.segmentMode = .SegmentOrganiseVertical`
+E.g. `segmentView.vertical = true`
 
 <p align="center"><img src ="/Screenshots/example_vertical.png"/></p>
 
