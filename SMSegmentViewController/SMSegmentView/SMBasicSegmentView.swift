@@ -15,7 +15,7 @@ public enum SegmentOrganiseMode: Int {
 }
 
 
-public protocol SMSegmentViewDelegate: class {
+@objc public protocol SMSegmentViewDelegate: class {
     func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int)
 }
 
