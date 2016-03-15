@@ -11,14 +11,14 @@ Pod::Spec.new do |s|
                    More customisible than UISegmentedControl and easier to expand with new style.
                    DESC
 
-  s.homepage     = "https://github.com/allenbryan11/SMSegmentView"
+  s.homepage     = "https://github.com/gtsif21/SMSegmentView"
   s.license      = { :type => "MIT", :file => "LICENSE.md" }
   s.author       = "allenbryan11"
   s.platform     = :ios, "7.0"
 
   s.ios.deployment_target = "7.0"
 
-  s.source       = { :git => "https://github.com/allenbryan11/SMSegmentView.git", :branch => "master" }
+  s.source       = { :git => "https://github.com/gtsif21/SMSegmentView.git", :branch => "master" }
 
 
   s.source_files  = "SMSegmentViewController/SMSegmentView/*.swift"

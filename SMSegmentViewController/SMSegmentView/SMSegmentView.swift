@@ -8,7 +8,7 @@
 import UIKit
 
 /*
-  Keys for segment properties
+Keys for segment properties
 */
 
 // This is mainly for the top/bottom margin of the imageView
@@ -39,7 +39,12 @@ public class SMSegmentView: SMBasicSegmentView {
         }
     }
     
-   
+    @IBInspectable public var cornerRadius: CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
     // Segment Colour
     @IBInspectable public var segmentOnSelectionColour: UIColor = UIColor.darkGrayColor() {
         didSet {
@@ -78,9 +83,11 @@ public class SMSegmentView: SMBasicSegmentView {
             }
         }
     }
-        
+    
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        self.backgroundColor = UIColor.clearColor()
+        self.layer.masksToBounds = true
     }
     
     override public init(frame: CGRect) {
@@ -137,6 +144,12 @@ public class SMSegmentView: SMBasicSegmentView {
         
         self.backgroundColor = UIColor.clearColor()
         self.layer.masksToBounds = true
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        self.addSegmentWithTitle("Selected", onSelectionImage: nil, offSelectionImage: nil)
+        self.addSegmentWithTitle("Unselected", onSelectionImage: nil, offSelectionImage: nil)
+        self.selectSegmentAtIndex(0)
     }
     
     public func addSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) -> SMSegment {
