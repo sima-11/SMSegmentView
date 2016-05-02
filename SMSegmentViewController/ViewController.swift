@@ -9,6 +9,11 @@ import UIKit
 
 class ViewController: UIViewController, SMSegmentViewDelegate {
     
+    @IBOutlet weak var defaultSegmentContainerView: UIView!
+    @IBOutlet weak var alphaSegmentContainerView: UIView!
+    
+    @IBOutlet weak var allowNoSelectionSwitchButton: UISwitch!
+    
     var segmentView: SMSegmentView!
     var alphaSegmentView: SMBasicSegmentView!
     var margin: CGFloat = 10.0
@@ -16,15 +21,27 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        self.view.layoutIfNeeded()
+        setupSegmentViews()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    private func setupSegmentViews() {
         
         /*
-          Init SMsegmentView
-          Use a Dictionary here to set its properties.
-          Each property has its own default value, so you only need to specify for those you are interested.
-        */
-        let segmentFrame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
+         Init SMsegmentView
+         Use a Dictionary here to set its properties.
+         Each property has its own default value, so you only need to specify for those you are interested.
+         */
         
-        self.segmentView = SMSegmentView(frame: segmentFrame, separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: Float(10.0)])
+        self.segmentView = SMSegmentView(frame: defaultSegmentContainerView.bounds, separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: Float(10.0)])
         
         self.segmentView.delegate = self
         
@@ -42,14 +59,13 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         
         // Set segment with index 0 as selected by default
         //segmentView.selectSegmentAtIndex(0)
-        self.view.addSubview(view)
+        self.defaultSegmentContainerView.addSubview(view)
         
         
         ////////////////////
         //Alpha Segment View
-        let alphaSegmentFrame = CGRect(x: self.margin, y: 200.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
         
-        self.alphaSegmentView = SMBasicSegmentView(frame: alphaSegmentFrame)
+        self.alphaSegmentView = SMBasicSegmentView(frame: alphaSegmentContainerView.bounds)
         self.alphaSegmentView.segments = [
             SMAlphaImageSegment(margin: 10.0, selectedAlpha: 1.0, unselectedAlpha: 0.3, pressedAlpha: 0.65, image: UIImage(named: "clip")),
             SMAlphaImageSegment(margin: 10.0, selectedAlpha: 1.0, unselectedAlpha: 0.3, pressedAlpha: 0.65, image: UIImage(named: "bulb")),
@@ -61,9 +77,9 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
         self.alphaSegmentView.layer.borderWidth = 1.0
         self.alphaSegmentView.backgroundColor = UIColor.clearColor()
         
-        self.view.addSubview(self.alphaSegmentView)
+        self.alphaSegmentContainerView.addSubview(self.alphaSegmentView)
     }
-
+    
     // SMSegment Delegate
     func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
         /*
@@ -98,6 +114,10 @@ class ViewController: UIViewController, SMSegmentViewDelegate {
             self.alphaSegmentView.frame = CGRect(x: self.margin, y: 200.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
             
         }
+    }
+    
+    @IBAction func allowNoSectionAction(sender: AnyObject) {
+        self.segmentView?.allowNoSelection = self.allowNoSelectionSwitchButton.on
     }
 }
 
