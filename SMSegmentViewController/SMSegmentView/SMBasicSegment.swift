@@ -36,6 +36,8 @@ public class SMBasicSegment : UIView {
         super.touchesEnded(touches, withEvent: event)
         if self.isSelected == false{
             self.segmentView?.selectSegmentAtIndex(self.index)
+        }else{
+            self.segmentView?.removeAllSelectionsIfAllowed()
         }
     }
 }

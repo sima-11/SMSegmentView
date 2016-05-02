@@ -36,9 +36,12 @@ public class SMBasicSegmentView: UIView {
     public weak var delegate: SMSegmentViewDelegate?
     
     public private(set) var indexOfSelectedSegment: Int = NSNotFound
+    
     var numberOfSegments: Int {get {
         return segments.count
         }}
+    
+    @IBInspectable public var allowNoSelection: Bool = false
     
     @IBInspectable public var vertical: Bool = false{
         didSet {
@@ -53,6 +56,7 @@ public class SMBasicSegmentView: UIView {
             self.setNeedsDisplay()
         }
     }
+    
     @IBInspectable public var separatorWidth: CGFloat = 1.0 {
         didSet {
             self.updateFrameForSegments()
@@ -146,16 +150,23 @@ public class SMBasicSegmentView: UIView {
     
     // MARK: Actions
     public func selectSegmentAtIndex(index: Int) {
-        assert(index >= 0 && index < self.segments.count, "Index at \(index) is out of bounds")
         
-        if self.indexOfSelectedSegment != NSNotFound {
-            let previousSelectedSegment = self.segments[self.indexOfSelectedSegment]
-            previousSelectedSegment.setSelected(false, inView: self)
+        if index == NSNotFound {
+            self.deselectSegment()
+            self.delegate?.segmentView(self, didSelectSegmentAtIndex: index)
+        }else{
+            assert(index >= 0 && index < self.segments.count, "Index at \(index) is out of bounds")
+            
+            if self.indexOfSelectedSegment != NSNotFound {
+                let previousSelectedSegment = self.segments[self.indexOfSelectedSegment]
+                previousSelectedSegment.setSelected(false, inView: self)
+            }
+            self.indexOfSelectedSegment = index
+            let segment = self.segments[index]
+            segment.setSelected(true, inView: self)
+            self.delegate?.segmentView(self, didSelectSegmentAtIndex: index)
         }
-        self.indexOfSelectedSegment = index
-        let segment = self.segments[index]
-        segment.setSelected(true, inView: self)
-        self.delegate?.segmentView(self, didSelectSegmentAtIndex: index)
+        
     }
     
     public func deselectSegment() {
@@ -164,6 +175,16 @@ public class SMBasicSegmentView: UIView {
             segment.setSelected(false, inView: self)
             self.indexOfSelectedSegment = NSNotFound
         }
+    }
+    
+    public func removeAllSelectionsIfAllowed() {
+        if !allowNoSelection { return }
+        self.removeAllSelections()
+    }
+
+    public func removeAllSelections() {
+        self.deselectSegment()
+        self.selectSegmentAtIndex(NSNotFound)
     }
     
     public func addSegment(segment: SMBasicSegment){
