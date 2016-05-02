@@ -33,7 +33,7 @@ public class SMAlphaImageSegment: SMBasicSegment {
     
     internal(set) var imageView: UIImageView = UIImageView()
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     public init(margin: CGFloat, selectedAlpha: CGFloat, unselectedAlpha: CGFloat, pressedAlpha: CGFloat, image: UIImage?) {

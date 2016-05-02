@@ -4,7 +4,8 @@
 - Custom segmented control for iOS 7 and above.
 - Written in Swift.
 - Support both images and text.
-- Support vertically organise segments
+- Support vertically organise segments.
+- Support no selection.
 - More customisible than UISegmentedControl and easier to expand with new style.
 
 #### For CocoaPods User
@@ -52,6 +53,9 @@ You can organise all segments vertically by setting the `segmentMode` as `.Segme
 E.g. `segmentView.segmentMode = .SegmentOrganiseVertical`
 
 <p align="center"><img src ="/Screenshots/example_vertical.png"/></p>
+
+# Support No Selection
+Set `segmentView.allowNoSelection` to `true` to allow user to deselect a selected index. On deselected a selected index SegmentView will return `NSNotFound` on `func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int)` delegate method.
 
 # More Info
 The framework comes with a sample project for you.

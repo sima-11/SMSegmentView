@@ -16,7 +16,7 @@ public class SMBasicSegment : UIView {
     public private(set) var isSelected: Bool = false
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+         super.init(coder: aDecoder)
     }
     
     override public init(frame: CGRect) {
@@ -36,6 +36,8 @@ public class SMBasicSegment : UIView {
         super.touchesEnded(touches, withEvent: event)
         if self.isSelected == false{
             self.segmentView?.selectSegmentAtIndex(self.index)
+        }else{
+            self.segmentView?.removeAllSelectionsIfAllowed()
         }
     }
 }
