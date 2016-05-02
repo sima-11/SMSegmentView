@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SMSegmentView"
-  s.version      = "0.0.1"
+  s.version      = "1.2.0"
   s.summary      = "Custom segmented control for iOS 7 and above"
 
   s.description  = <<-DESC
