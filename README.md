@@ -24,8 +24,8 @@ But mostly, you may want to use `SMSegmentView(frame: seperatorColour: seperator
 The parameter `segmentProperties:` reads a `Dictionary<String, AnyObject>` value. You can find what key it supports on the top of `SMSegmentView` file.
 
 E.g.:
-```
-var segmentView = SMSegmentView(frame: CGRect(x: 10.0, y: 50.0, width: 300.0, height: 40.0), seperatorColour: UIColor.blueColor(), seperatorWidth: 1.0, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor.blackColor(), keySegmentOffSelectionColour: UIColor.greenColor(), keyContentVerticalMargin: 5.0])
+```swift
+let segmentView = SMSegmentView(frame: CGRect(x: 10.0, y: 50.0, width: 300.0, height: 40.0), seperatorColour: UIColor.blueColor(), seperatorWidth: 1.0, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor.blackColor(), keySegmentOffSelectionColour: UIColor.greenColor(), keyContentVerticalMargin: 5.0])
 ```
 
 #### Step 3
@@ -37,7 +37,7 @@ E.g. `segmentView.delegate = self`
 Add segments to your segment view.
 
 E.g.:
-```
+```swift
 segmentView.addSegmentWithTitle("Segment 1", onSelectionImage: UIImage(named: "target_light"), offSelectionImage: UIImage(named: "target"))
 segmentView.addSegmentWithTitle("Segment 2", onSelectionImage: UIImage(named: "handbag_light"), offSelectionImage: UIImage(named: "handbag"))
 segmentView.addSegmentWithTitle("Segment 3", onSelectionImage: UIImage(named: "globe_light"), offSelectionImage: UIImage(named: "globe"))
