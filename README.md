@@ -20,18 +20,25 @@ Drag `SMSegmentView.swift` and `SMSegment.swift` into your Xcode project.
 #### Step 2
 Initialise SMSegmentView:
 You can simply use `SMSegmentView(frame:)` to initialise your segment view by using the default properties. 
-But mostly, you may want to use `SMSegmentView(frame: seperatorColour: seperatorWidth: segmentProperties:)` to make it look more customised.
-The parameter `segmentProperties:` reads a `Dictionary<String, AnyObject>` value. You can find what key it supports on the top of `SMSegmentView` file.
+But mostly, you may want to use `SMSegmentView(frame:, dividerColour:, dividerWidth:, segmentAppearance:)` to make it look more customised.
+The parameter `segmentAppearance:` reads a `SMSegmentAppearance` instance. You can find what attributes it supports in `SMSegmentAppearance` class.
 
 E.g.:
-```
-var segmentView = SMSegmentView(frame: CGRect(x: 10.0, y: 50.0, width: 300.0, height: 40.0), seperatorColour: UIColor.blueColor(), seperatorWidth: 1.0, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor.blackColor(), keySegmentOffSelectionColour: UIColor.greenColor(), keyContentVerticalMargin: 5.0])
+```swift
+let appearance = SMSegmentAppearance()
+appearance.segmentOnSelectionColour = UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0)
+appearance.segmentOffSelectionColour = UIColor.whiteColor()
+appearance.titleOnSelectionFont = UIFont.systemFontOfSize(12.0)
+appearance.titleOffSelectionFont = UIFont.systemFontOfSize(12.0)
+appearance.contentVerticalMargin = 10.0
+
+let segmentView = SMSegmentView(frame: SomeFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
 ```
 
 #### Step 3
-Assign delegate for the instance of SMSegmentView.
+Add action for UIControlEvents.ValueChanged, and implement the action method.
 
-E.g. `segmentView.delegate = self`
+E.g. `segmentView.addTarget(self, action: #selector(YourViewController.selectSegmentInSegmentView(_:)), forControlEvents: .ValueChanged)`
 
 #### Step 4
 Add segments to your segment view.
@@ -44,12 +51,12 @@ segmentView.addSegmentWithTitle("Segment 3", onSelectionImage: UIImage(named: "g
 ```
 
 #### Optional Step
-You can programmatically select/deselect a segment by calling `selectSegmentAtIndex(index: Int)`.
+You can programmatically select/deselect a segment by assign an integer to `selectedSegmentIndex`.
 
 # Support Vertical Mode
-You can organise all segments vertically by setting the `segmentMode` as `.SegmentOrganiseVertical`. It is set to `.SegmentOrganiseHorizontal` by default.
+You can organise all segments vertically by setting the `organiseMode` as `.Vertical`. It is set to `.Horizontal` by default.
 
-E.g. `segmentView.segmentMode = .SegmentOrganiseVertical`
+E.g. `segmentView.organiseMode = .Vertical`
 
 <p align="center"><img src ="/Screenshots/example_vertical.png"/></p>
 
