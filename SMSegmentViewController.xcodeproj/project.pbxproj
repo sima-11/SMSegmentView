@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2315A3D61D46A0A300F0F9CD /* SMSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315A3D41D46A0A300F0F9CD /* SMSegmentAppearance.swift */; };
+		2315A3D71D46A0A300F0F9CD /* SMSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315A3D41D46A0A300F0F9CD /* SMSegmentAppearance.swift */; };
+		2315A3D81D46A0A300F0F9CD /* SMSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315A3D51D46A0A300F0F9CD /* SMSegmentViewConstants.swift */; };
+		2315A3D91D46A0A300F0F9CD /* SMSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315A3D51D46A0A300F0F9CD /* SMSegmentViewConstants.swift */; };
 		2346DF291A619BBA00DEFA20 /* bulb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2346DF1D1A619BB900DEFA20 /* bulb.png */; };
 		2346DF2A1A619BBA00DEFA20 /* bulb_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 2346DF1E1A619BB900DEFA20 /* bulb_light.png */; };
 		2346DF2B1A619BBA00DEFA20 /* bulb_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2346DF1F1A619BB900DEFA20 /* bulb_light@2x.png */; };
@@ -27,15 +31,9 @@
 		6957D72E1A5A997A007AC81B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6957D72D1A5A997A007AC81B /* Images.xcassets */; };
 		6957D7311A5A997A007AC81B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6957D72F1A5A997A007AC81B /* LaunchScreen.xib */; };
 		6957D73D1A5A997A007AC81B /* SMSegmentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957D73C1A5A997A007AC81B /* SMSegmentViewControllerTests.swift */; };
-		C19086811BBCBCF900DCF698 /* SMBasicSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086801BBCBCF900DCF698 /* SMBasicSegmentView.swift */; settings = {ASSET_TAGS = (); }; };
-		C19086831BBCBD1300DCF698 /* SMBasicSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086821BBCBD1300DCF698 /* SMBasicSegment.swift */; settings = {ASSET_TAGS = (); }; };
-		C19086851BBCC92A00DCF698 /* SMAlphaImageSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086841BBCC92A00DCF698 /* SMAlphaImageSegment.swift */; settings = {ASSET_TAGS = (); }; };
 		C19594531BD91785008D80C0 /* SMSegmentView.h in Headers */ = {isa = PBXBuildFile; fileRef = C19594521BD91785008D80C0 /* SMSegmentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C19594581BD917ED008D80C0 /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346DF371A619FC200DEFA20 /* SMSegmentView.swift */; };
 		C19594591BD917ED008D80C0 /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346DF361A619FC200DEFA20 /* SMSegment.swift */; };
-		C195945A1BD917ED008D80C0 /* SMBasicSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086801BBCBCF900DCF698 /* SMBasicSegmentView.swift */; };
-		C195945B1BD917ED008D80C0 /* SMBasicSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086821BBCBD1300DCF698 /* SMBasicSegment.swift */; };
-		C195945C1BD917ED008D80C0 /* SMAlphaImageSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19086841BBCC92A00DCF698 /* SMAlphaImageSegment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2315A3D41D46A0A300F0F9CD /* SMSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentAppearance.swift; sourceTree = "<group>"; };
+		2315A3D51D46A0A300F0F9CD /* SMSegmentViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentViewConstants.swift; sourceTree = "<group>"; };
 		2346DF1D1A619BB900DEFA20 /* bulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulb.png; sourceTree = "<group>"; };
 		2346DF1E1A619BB900DEFA20 /* bulb_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulb_light.png; sourceTree = "<group>"; };
 		2346DF1F1A619BB900DEFA20 /* bulb_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bulb_light@2x.png"; sourceTree = "<group>"; };
@@ -73,9 +73,6 @@
 		6957D7361A5A997A007AC81B /* SMSegmentViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMSegmentViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6957D73B1A5A997A007AC81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6957D73C1A5A997A007AC81B /* SMSegmentViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSegmentViewControllerTests.swift; sourceTree = "<group>"; };
-		C19086801BBCBCF900DCF698 /* SMBasicSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMBasicSegmentView.swift; sourceTree = "<group>"; };
-		C19086821BBCBD1300DCF698 /* SMBasicSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMBasicSegment.swift; sourceTree = "<group>"; };
-		C19086841BBCC92A00DCF698 /* SMAlphaImageSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlphaImageSegment.swift; sourceTree = "<group>"; };
 		C19594501BD91785008D80C0 /* SMSegmentView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMSegmentView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C19594521BD91785008D80C0 /* SMSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSegmentView.h; sourceTree = "<group>"; };
 		C19594541BD91785008D80C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,11 +106,10 @@
 		2346DF351A619FC200DEFA20 /* SMSegmentView */ = {
 			isa = PBXGroup;
 			children = (
+				2315A3D41D46A0A300F0F9CD /* SMSegmentAppearance.swift */,
+				2315A3D51D46A0A300F0F9CD /* SMSegmentViewConstants.swift */,
 				2346DF371A619FC200DEFA20 /* SMSegmentView.swift */,
 				2346DF361A619FC200DEFA20 /* SMSegment.swift */,
-				C19086801BBCBCF900DCF698 /* SMBasicSegmentView.swift */,
-				C19086821BBCBD1300DCF698 /* SMBasicSegment.swift */,
-				C19086841BBCC92A00DCF698 /* SMAlphaImageSegment.swift */,
 			);
 			path = SMSegmentView;
 			sourceTree = "<group>";
@@ -363,10 +359,9 @@
 				6957D7291A5A997A007AC81B /* ViewController.swift in Sources */,
 				2346DF391A619FC200DEFA20 /* SMSegmentView.swift in Sources */,
 				2346DF381A619FC200DEFA20 /* SMSegment.swift in Sources */,
+				2315A3D81D46A0A300F0F9CD /* SMSegmentViewConstants.swift in Sources */,
 				6957D7271A5A997A007AC81B /* AppDelegate.swift in Sources */,
-				C19086831BBCBD1300DCF698 /* SMBasicSegment.swift in Sources */,
-				C19086811BBCBCF900DCF698 /* SMBasicSegmentView.swift in Sources */,
-				C19086851BBCC92A00DCF698 /* SMAlphaImageSegment.swift in Sources */,
+				2315A3D61D46A0A300F0F9CD /* SMSegmentAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,9 +379,8 @@
 			files = (
 				C19594581BD917ED008D80C0 /* SMSegmentView.swift in Sources */,
 				C19594591BD917ED008D80C0 /* SMSegment.swift in Sources */,
-				C195945A1BD917ED008D80C0 /* SMBasicSegmentView.swift in Sources */,
-				C195945B1BD917ED008D80C0 /* SMBasicSegment.swift in Sources */,
-				C195945C1BD917ED008D80C0 /* SMAlphaImageSegment.swift in Sources */,
+				2315A3D91D46A0A300F0F9CD /* SMSegmentViewConstants.swift in Sources */,
+				2315A3D71D46A0A300F0F9CD /* SMSegmentAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +630,7 @@
 				C19594561BD91785008D80C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
