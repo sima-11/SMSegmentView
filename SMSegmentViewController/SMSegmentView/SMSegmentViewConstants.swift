@@ -26,6 +26,6 @@ public struct SMSegmentedControlKeys {
 }
 
 public enum SMSegmentOrganiseMode: Int {
-    case Horizontal
-    case Vertical
+    case horizontal
+    case vertical
 }

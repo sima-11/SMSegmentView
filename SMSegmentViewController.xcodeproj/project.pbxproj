@@ -289,6 +289,7 @@
 					};
 					C195944F1BD91785008D80C0 = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -565,6 +566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sima.SMSegmentView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -588,6 +590,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sima.SMSegmentView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
