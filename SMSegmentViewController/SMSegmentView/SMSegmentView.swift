@@ -208,8 +208,8 @@ open class SMSegmentView: UIControl {
             if self.organiseMode == .horizontal {
                 var originX: CGFloat = self.segments[0].frame.size.width + self.dividerWidth/2.0
                 for index in 1..<self.segments.count {
-                    CGPathMoveToPoint(path, nil, originX, 0.0)
-                    CGPathAddLineToPoint(path, nil, originX, self.frame.size.height)
+                    path.move(to: CGPoint(x: originX, y: 0.0))
+                    path.addLine(to: CGPoint(x: originX, y: self.frame.size.height))
 
                     originX += self.segments[index].frame.width + self.dividerWidth
                 }
@@ -217,8 +217,8 @@ open class SMSegmentView: UIControl {
             else {
                 var originY: CGFloat = self.segments[0].frame.size.height + self.dividerWidth/2.0
                 for index in 1..<self.segments.count {
-                    CGPathMoveToPoint(path, nil, 0.0, originY)
-                    CGPathAddLineToPoint(path, nil, self.frame.size.width, originY)
+                    path.move(to: CGPoint(x: 0.0, y: originY))
+                    path.addLine(to: CGPoint(x: self.frame.size.width, y: originY))
 
                     originY += self.segments[index].frame.height + self.dividerWidth
                 }
