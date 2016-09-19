@@ -28,8 +28,7 @@ public class SMSegmentView: UIControl {
         get {
             if let segment = self.selectedSegment {
                 return segment.index
-            }
-            else {
+            } else {
                 return UISegmentedControlNoSegment
             }
         }
@@ -80,13 +79,13 @@ public class SMSegmentView: UIControl {
 
         self.dividerColour = dividerColour
         self.dividerWidth = dividerWidth
-        
+
         self.segmentAppearance = segmentAppearance
 
         self.backgroundColor = UIColor.clearColor()
         self.layer.masksToBounds = true
     }
-    
+
 
     // MARK: Actions
     // MARK: Select/deselect Segment
@@ -101,15 +100,18 @@ public class SMSegmentView: UIControl {
     }
 
     // MARK: Add Segment
-    public func addSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) {
-        self.insertSegmentWithTitle(title, onSelectionImage: onSelectionImage, offSelectionImage: offSelectionImage, index: self.segments.count)
+    public func addSegmentWithTitle(title: String?, attributedTitle: NSAttributedString?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, titleFont: UIFont?) {
+        self.insertSegmentWithTitle(title, attributedTitle: attributedTitle, onSelectionImage: onSelectionImage, offSelectionImage: offSelectionImage, titleFont: titleFont, index: self.segments.count)
     }
 
-    public func insertSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int) {
+    public func insertSegmentWithTitle(title: String?, attributedTitle: NSAttributedString?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, titleFont: UIFont?, index: Int) {
 
         let segment = SMSegment(appearance: self.segmentAppearance)
-
         segment.title = title
+        if attributedTitle != nil {
+            segment.attributedTitle = attributedTitle
+        }
+        segment.titleFont = titleFont
         segment.onSelectionImage = onSelectionImage
         segment.offSelectionImage = offSelectionImage
         segment.index = index
@@ -120,18 +122,18 @@ public class SMSegmentView: UIControl {
             }
         }
         segment.setupUIElements()
-        
+
         self.resetSegmentIndicesWithIndex(index, by: 1)
         self.segments.insert(segment, atIndex: index)
 
         self.addSubview(segment)
         self.layoutSubviews()
     }
-    
+
     // MARK: Remove Segment
     public func removeSegmentAtIndex(index: Int) {
         assert(index >= 0 && index < self.segments.count, "Index (\(index)) is out of range")
-        
+
         if index == self.selectedSegmentIndex {
             self.selectedSegmentIndex = UISegmentedControlNoSegment
         }
@@ -140,7 +142,7 @@ public class SMSegmentView: UIControl {
         segment.removeFromSuperview()
         self.updateSegmentsLayout()
     }
-    
+
     private func resetSegmentIndicesWithIndex(index: Int, by: Int) {
         if index < self.segments.count {
             for i in index..<self.segments.count {
@@ -158,7 +160,7 @@ public class SMSegmentView: UIControl {
     }
 
     private func updateSegmentsLayout() {
-        
+
         guard self.segments.count > 0 else {
             return
         }
@@ -172,8 +174,7 @@ public class SMSegmentView: UIControl {
                     segment.frame = CGRect(x: originX, y: 0.0, width: segmentWidth, height: self.frame.size.height)
                     originX += segmentWidth + self.dividerWidth
                 }
-            }
-            else {
+            } else {
                 let segmentHeight = (self.frame.size.height - self.dividerWidth * CGFloat(self.segments.count-1)) / CGFloat(self.segments.count)
 
                 var originY: CGFloat = 0.0
@@ -182,8 +183,7 @@ public class SMSegmentView: UIControl {
                     originY += segmentHeight + self.dividerWidth
                 }
             }
-        }
-        else {
+        } else {
             self.segments[0].frame = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
         }
 
@@ -213,8 +213,7 @@ public class SMSegmentView: UIControl {
 
                     originX += self.segments[index].frame.width + self.dividerWidth
                 }
-            }
-            else {
+            } else {
                 var originY: CGFloat = self.segments[0].frame.size.height + self.dividerWidth/2.0
                 for index in 1..<self.segments.count {
                     CGPathMoveToPoint(path, nil, 0.0, originY)
@@ -229,7 +228,7 @@ public class SMSegmentView: UIControl {
             CGContextSetLineWidth(context, self.dividerWidth)
             CGContextDrawPath(context, CGPathDrawingMode.Stroke)
         }
-        
+
         CGContextRestoreGState(context)
     }
 }
