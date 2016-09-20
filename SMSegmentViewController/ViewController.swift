@@ -42,9 +42,9 @@ class ViewController: UIViewController {
         self.segmentView.layer.borderWidth = 1.0
 
         // Add segments
-        self.segmentView.addSegmentWithTitle("Clip", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
-        self.segmentView.addSegmentWithTitle("Blub", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
-        self.segmentView.addSegmentWithTitle("Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
+        self.segmentView.addSegmentWithTitle("Clip", attributedTitle: nil, onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"), titleFont: nil)
+        self.segmentView.addSegmentWithTitle("Blub", attributedTitle: nil, onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"), titleFont: nil)
+        self.segmentView.addSegmentWithTitle("Cloud", attributedTitle: nil, onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"), titleFont: nil)
         
         self.segmentView.addTarget(self, action: #selector(ViewController.selectSegmentInSegmentView(_:)), forControlEvents: .ValueChanged)
         
