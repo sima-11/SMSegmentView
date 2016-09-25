@@ -7,16 +7,16 @@
 
 import UIKit
 
-public class SMSegment: UIView {
+open class SMSegment: UIView {
     
     // UI components
-    private var imageView: UIImageView = UIImageView()
-    private var label: UILabel = UILabel()
+    fileprivate var imageView: UIImageView = UIImageView()
+    fileprivate var label: UILabel = UILabel()
     
     // Title
-    public var title: String? {
+    open var title: String? {
         didSet {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.label.text = self.title
                 self.layoutSubviews()
             })
@@ -24,16 +24,16 @@ public class SMSegment: UIView {
     }
     
     // Image
-    public var onSelectionImage: UIImage?
-    public var offSelectionImage: UIImage?
+    open var onSelectionImage: UIImage?
+    open var offSelectionImage: UIImage?
     
     // Appearance
-    public var appearance: SMSegmentAppearance?
+    open var appearance: SMSegmentAppearance?
     
-    internal var didSelectSegment: ((segment: SMSegment)->())?
+    internal var didSelectSegment: ((_ segment: SMSegment)->())?
     
-    public internal(set) var index: Int = 0
-    public private(set) var isSelected: Bool = false
+    open internal(set) var index: Int = 0
+    open fileprivate(set) var isSelected: Bool = false
     
     
     // Init
@@ -41,7 +41,7 @@ public class SMSegment: UIView {
         
         self.appearance = appearance
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.addUIElementsToView()
     }
     
@@ -49,17 +49,17 @@ public class SMSegment: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addUIElementsToView() {
+    fileprivate func addUIElementsToView() {
         
-        self.imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        self.imageView.contentMode = UIViewContentMode.scaleAspectFit
         self.addSubview(self.imageView)
         
-        self.label.textAlignment = NSTextAlignment.Center
+        self.label.textAlignment = NSTextAlignment.center
         self.addSubview(self.label)
     }
     
     internal func setupUIElements() {
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             if let appearance = self.appearance {
                 self.backgroundColor = appearance.segmentOffSelectionColour
                 self.label.font = appearance.titleOffSelectionFont
@@ -71,7 +71,7 @@ public class SMSegment: UIView {
     
     
     // MARK: Update label and imageView frame
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         var distanceBetween: CGFloat = 0.0
@@ -81,7 +81,7 @@ public class SMSegment: UIView {
             verticalMargin = appearance.contentVerticalMargin
         }
         
-        var imageViewFrame = CGRectMake(0.0, verticalMargin, 0.0, self.frame.size.height - verticalMargin*2)
+        var imageViewFrame = CGRect(x: 0.0, y: verticalMargin, width: 0.0, height: self.frame.size.height - verticalMargin*2)
         if self.onSelectionImage != nil || self.offSelectionImage != nil {
             // Set imageView as a square
             imageViewFrame.size.width = self.frame.size.height - verticalMargin*2
@@ -99,21 +99,21 @@ public class SMSegment: UIView {
         }
         
         self.imageView.frame = imageViewFrame
-        self.label.frame = CGRectMake(imageViewFrame.origin.x + imageViewFrame.size.width + distanceBetween, verticalMargin, self.label.frame.size.width, self.frame.size.height - verticalMargin * 2)
+        self.label.frame = CGRect(x: imageViewFrame.origin.x + imageViewFrame.size.width + distanceBetween, y: verticalMargin, width: self.label.frame.size.width, height: self.frame.size.height - verticalMargin * 2)
     }
     
     // MARK: Selections
-    internal func setSelected(selected: Bool) {
+    internal func setSelected(_ selected: Bool) {
         self.isSelected = selected
         if selected == true {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.backgroundColor = self.appearance?.segmentOnSelectionColour
                 self.label.textColor = self.appearance?.titleOnSelectionColour
                 self.imageView.image = self.onSelectionImage
             })
         }
         else {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.backgroundColor = self.appearance?.segmentOffSelectionColour
                 self.label.textColor = self.appearance?.titleOffSelectionColour
                 self.imageView.image = self.offSelectionImage
@@ -122,15 +122,15 @@ public class SMSegment: UIView {
     }
     
     // MARK: Handle touch
-    override public  func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open  func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.isSelected == false {
             self.backgroundColor = self.appearance?.segmentTouchDownColour
         }
     }
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.isSelected == false{
-            self.didSelectSegment?(segment: self)
+            self.didSelectSegment?(self)
         }
     }
 }

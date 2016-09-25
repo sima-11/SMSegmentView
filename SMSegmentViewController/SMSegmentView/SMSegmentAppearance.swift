@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class SMSegmentAppearance {
+open class SMSegmentAppearance {
     
     // PROPERTIES
-    public var segmentOnSelectionColour: UIColor
-    public var segmentOffSelectionColour: UIColor
-    public var segmentTouchDownColour: UIColor {
+    open var segmentOnSelectionColour: UIColor
+    open var segmentOffSelectionColour: UIColor
+    open var segmentTouchDownColour: UIColor {
         get {
             var onSelectionHue: CGFloat = 0.0
             var onSelectionSaturation: CGFloat = 0.0
@@ -31,25 +31,25 @@ public class SMSegmentAppearance {
         }
     }
     
-    public var titleOnSelectionColour: UIColor
-    public var titleOffSelectionColour: UIColor
+    open var titleOnSelectionColour: UIColor
+    open var titleOffSelectionColour: UIColor
     
-    public var titleOnSelectionFont: UIFont
-    public var titleOffSelectionFont: UIFont
+    open var titleOnSelectionFont: UIFont
+    open var titleOffSelectionFont: UIFont
     
-    public var contentVerticalMargin: CGFloat
+    open var contentVerticalMargin: CGFloat
     
     
     // INITIALISER
     internal init() {
         
-        self.segmentOnSelectionColour = UIColor.darkGrayColor()
-        self.segmentOffSelectionColour = UIColor.grayColor()
+        self.segmentOnSelectionColour = UIColor.darkGray
+        self.segmentOffSelectionColour = UIColor.gray
         
-        self.titleOnSelectionColour = UIColor.whiteColor()
-        self.titleOffSelectionColour = UIColor.darkGrayColor()
-        self.titleOnSelectionFont = UIFont.systemFontOfSize(17.0)
-        self.titleOffSelectionFont = UIFont.systemFontOfSize(17.0)
+        self.titleOnSelectionColour = UIColor.white
+        self.titleOffSelectionColour = UIColor.darkGray
+        self.titleOnSelectionFont = UIFont.systemFont(ofSize: 17.0)
+        self.titleOffSelectionFont = UIFont.systemFont(ofSize: 17.0)
         
         self.contentVerticalMargin = 5.0
     }
