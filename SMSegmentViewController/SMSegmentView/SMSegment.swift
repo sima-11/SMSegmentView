@@ -12,7 +12,6 @@ public class SMSegment: UIView {
     // UI components
     private var imageView: UIImageView = UIImageView()
     private var label: UILabel = UILabel()
-    private var segmentDivider: UIView = UIView()
 
     // Title
     public var title: String? {
@@ -74,7 +73,6 @@ public class SMSegment: UIView {
 
         self.label.textAlignment = NSTextAlignment.Center
         self.addSubview(self.label)
-        self.addSubview(self.segmentDivider)
     }
 
     internal func setupUIElements() {
@@ -82,7 +80,6 @@ public class SMSegment: UIView {
             if let appearance = self.appearance {
                 self.backgroundColor = appearance.segmentOffSelectionColour
                 self.label.textColor = appearance.titleOffSelectionColour
-                self.segmentDivider.backgroundColor = appearance.segmentOffBottomDividerColour
             }
             self.imageView.image = self.offSelectionImage
         })
@@ -118,7 +115,6 @@ public class SMSegment: UIView {
 
         self.imageView.frame = imageViewFrame
         self.label.frame = CGRectMake(imageViewFrame.origin.x + imageViewFrame.size.width + distanceBetween, verticalMargin, self.label.frame.size.width, self.frame.size.height - verticalMargin * 2)
-        self.segmentDivider.frame = CGRectMake(0, self.frame.size.height - 2, self.frame.size.width, 2)
     }
 
     // MARK: Selections
@@ -129,14 +125,12 @@ public class SMSegment: UIView {
                 self.backgroundColor = self.appearance?.segmentOnSelectionColour
                 self.label.textColor = self.appearance?.titleOnSelectionColour
                 self.imageView.image = self.onSelectionImage
-                self.segmentDivider.backgroundColor = self.appearance?.segmentOnBottomDividerColour
             })
         } else {
             dispatch_async(dispatch_get_main_queue(), {
                 self.backgroundColor = self.appearance?.segmentOffSelectionColour
                 self.label.textColor = self.appearance?.titleOffSelectionColour
                 self.imageView.image = self.offSelectionImage
-                self.segmentDivider.backgroundColor = self.appearance?.segmentOffBottomDividerColour
             })
         }
     }

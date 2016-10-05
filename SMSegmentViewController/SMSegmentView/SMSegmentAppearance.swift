@@ -37,9 +37,6 @@ public class SMSegmentAppearance: NSObject {
     public var titleOnSelectionFont: UIFont
     public var titleOffSelectionFont: UIFont
 
-    public var segmentOnBottomDividerColour: UIColor
-    public var segmentOffBottomDividerColour: UIColor
-
     public var contentVerticalMargin: CGFloat
 
 
@@ -54,13 +51,10 @@ public class SMSegmentAppearance: NSObject {
         self.titleOnSelectionFont = UIFont.systemFontOfSize(17.0)
         self.titleOffSelectionFont = UIFont.systemFontOfSize(17.0)
 
-        self.segmentOnBottomDividerColour = UIColor.clearColor()
-        self.segmentOffBottomDividerColour = UIColor.clearColor()
-
         self.contentVerticalMargin = 5.0
     }
 
-    internal init(contentVerticalMargin: CGFloat, segmentOnSelectionColour: UIColor, segmentOffSelectionColour: UIColor, titleOnSelectionColour: UIColor, titleOffSelectionColour: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont, segmentOnBottomDividerColour: UIColor, segmentOffBottomDividerColour: UIColor) {
+    internal init(contentVerticalMargin: CGFloat, segmentOnSelectionColour: UIColor, segmentOffSelectionColour: UIColor, titleOnSelectionColour: UIColor, titleOffSelectionColour: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont) {
 
         self.contentVerticalMargin = contentVerticalMargin
 
@@ -71,8 +65,5 @@ public class SMSegmentAppearance: NSObject {
         self.titleOffSelectionColour = titleOffSelectionColour
         self.titleOnSelectionFont = titleOnSelectionFont
         self.titleOffSelectionFont = titleOffSelectionFont
-
-        self.segmentOnBottomDividerColour = segmentOnBottomDividerColour
-        self.segmentOffBottomDividerColour = segmentOffBottomDividerColour
     }
 }
