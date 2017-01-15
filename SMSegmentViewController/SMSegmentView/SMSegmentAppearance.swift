@@ -41,7 +41,7 @@ open class SMSegmentAppearance {
     
     
     // INITIALISER
-    internal init() {
+    public init() {
         
         self.segmentOnSelectionColour = UIColor.darkGray
         self.segmentOffSelectionColour = UIColor.gray
@@ -54,7 +54,7 @@ open class SMSegmentAppearance {
         self.contentVerticalMargin = 5.0
     }
     
-    internal init(contentVerticalMargin: CGFloat, segmentOnSelectionColour: UIColor, segmentOffSelectionColour: UIColor, titleOnSelectionColour: UIColor, titleOffSelectionColour: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont) {
+    public init(contentVerticalMargin: CGFloat, segmentOnSelectionColour: UIColor, segmentOffSelectionColour: UIColor, titleOnSelectionColour: UIColor, titleOffSelectionColour: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont) {
         
         self.contentVerticalMargin = contentVerticalMargin
         
