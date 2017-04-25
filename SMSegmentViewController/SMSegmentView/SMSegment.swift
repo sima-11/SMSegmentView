@@ -109,6 +109,7 @@ open class SMSegment: UIView {
             DispatchQueue.main.async(execute: {
                 self.backgroundColor = self.appearance?.segmentOnSelectionColour
                 self.label.textColor = self.appearance?.titleOnSelectionColour
+                self.label.font = self.appearance?.titleOnSelectionFont
                 self.imageView.image = self.onSelectionImage
             })
         }
@@ -116,6 +117,7 @@ open class SMSegment: UIView {
             DispatchQueue.main.async(execute: {
                 self.backgroundColor = self.appearance?.segmentOffSelectionColour
                 self.label.textColor = self.appearance?.titleOffSelectionColour
+                self.label.font = self.appearance?.titleOffSelectionFont
                 self.imageView.image = self.offSelectionImage
             })
         }
