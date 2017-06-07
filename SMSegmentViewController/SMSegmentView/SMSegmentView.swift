@@ -26,12 +26,7 @@ open class SMSegmentView: UIControl {
 
     open var selectedSegmentIndex: Int {
         get {
-            if let segment = self.selectedSegment {
-                return segment.index
-            }
-            else {
-                return UISegmentedControlNoSegment
-            }
+            return selectedSegment?.index ?? UISegmentedControlNoSegment
         }
         set(newIndex) {
             self.deselectSegment()
@@ -69,7 +64,7 @@ open class SMSegmentView: UIControl {
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         self.layer.masksToBounds = true
         self.segmentAppearance = SMSegmentAppearance()
     }
@@ -83,7 +78,7 @@ open class SMSegmentView: UIControl {
         
         self.segmentAppearance = segmentAppearance
 
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         self.layer.masksToBounds = true
     }
     

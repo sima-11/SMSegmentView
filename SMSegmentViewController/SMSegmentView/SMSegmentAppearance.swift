@@ -43,13 +43,13 @@ open class SMSegmentAppearance {
     // INITIALISER
     public init() {
         
-        self.segmentOnSelectionColour = UIColor.darkGray
-        self.segmentOffSelectionColour = UIColor.gray
+        self.segmentOnSelectionColour = .darkGray
+        self.segmentOffSelectionColour = .gray
         
-        self.titleOnSelectionColour = UIColor.white
-        self.titleOffSelectionColour = UIColor.darkGray
-        self.titleOnSelectionFont = UIFont.systemFont(ofSize: 17.0)
-        self.titleOffSelectionFont = UIFont.systemFont(ofSize: 17.0)
+        self.titleOnSelectionColour = .white
+        self.titleOffSelectionColour = .darkGray
+        self.titleOnSelectionFont = .systemFont(ofSize: 17.0)
+        self.titleOffSelectionFont = .systemFont(ofSize: 17.0)
         
         self.contentVerticalMargin = 5.0
     }
