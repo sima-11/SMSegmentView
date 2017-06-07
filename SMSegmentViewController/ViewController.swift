@@ -23,9 +23,9 @@ class ViewController: UIViewController {
         
         let appearance = SMSegmentAppearance()
         appearance.segmentOnSelectionColour = UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        appearance.segmentOffSelectionColour = UIColor.white
-        appearance.titleOnSelectionFont = UIFont.systemFont(ofSize: 12.0)
-        appearance.titleOffSelectionFont = UIFont.systemFont(ofSize: 12.0)
+        appearance.segmentOffSelectionColour = .white
+        appearance.titleOnSelectionFont = .systemFont(ofSize: 12.0)
+        appearance.titleOffSelectionFont = .systemFont(ofSize: 12.0)
         appearance.contentVerticalMargin = 10.0
         
         
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
          */
         let segmentFrame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
         self.segmentView = SMSegmentView(frame: segmentFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
-        self.segmentView.backgroundColor = UIColor.clear
+        self.segmentView.backgroundColor = .clear
         
         self.segmentView.layer.cornerRadius = 5.0
         self.segmentView.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).cgColor
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         /*
         MARK: Replace the following line to your own frame setting for segmentView.
         */
-        if toInterfaceOrientation == UIInterfaceOrientation.landscapeLeft || toInterfaceOrientation == UIInterfaceOrientation.landscapeRight {
+        if toInterfaceOrientation == .landscapeLeft || toInterfaceOrientation == .landscapeRight {
             
             self.segmentView.organiseMode = .vertical
             if let appearance = self.segmentView.segmentAppearance {
