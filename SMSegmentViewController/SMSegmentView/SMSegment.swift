@@ -41,7 +41,7 @@ open class SMSegment: UIView {
         
         self.appearance = appearance
         
-        super.init(frame: CGRect.zero)
+        super.init(frame: .zero)
         self.addUIElementsToView()
     }
     
@@ -51,10 +51,10 @@ open class SMSegment: UIView {
     
     fileprivate func addUIElementsToView() {
         
-        self.imageView.contentMode = UIViewContentMode.scaleAspectFit
+        self.imageView.contentMode = .scaleAspectFit
         self.addSubview(self.imageView)
         
-        self.label.textAlignment = NSTextAlignment.center
+        self.label.textAlignment = .center
         self.addSubview(self.label)
     }
     

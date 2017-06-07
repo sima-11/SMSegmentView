@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         /*
         MARK: Replace the following line to your own frame setting for segmentView.
         */
-        if toInterfaceOrientation == UIInterfaceOrientation.landscapeLeft || toInterfaceOrientation == UIInterfaceOrientation.landscapeRight {
+        if toInterfaceOrientation == .landscapeLeft || toInterfaceOrientation == .landscapeRight {
             
             self.segmentView.organiseMode = .vertical
             if let appearance = self.segmentView.segmentAppearance {

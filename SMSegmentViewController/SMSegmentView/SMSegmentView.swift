@@ -13,7 +13,7 @@ open class SMSegmentView: UIControl {
     open var segmentAppearance: SMSegmentAppearance?
 
     // Divider colour & width
-    open var dividerColour: UIColor = UIColor.lightGray {
+    open var dividerColour: UIColor = .lightGray {
         didSet {
             self.setNeedsDisplay()
         }
@@ -30,7 +30,7 @@ open class SMSegmentView: UIControl {
         }
         set(newIndex) {
             self.deselectSegment()
-            if newIndex >= 0 && newIndex < self.segments.count {
+            if segments.indices.contains(newIndex) {
                 let currentSelectedSegment = self.segments[newIndex]
                 self.selectSegment(currentSelectedSegment)
             }
@@ -125,7 +125,7 @@ open class SMSegmentView: UIControl {
     
     // MARK: Remove Segment
     open func removeSegmentAtIndex(_ index: Int) {
-        assert(index >= 0 && index < self.segments.count, "Index (\(index)) is out of range")
+        assert(segments.indices.contains(index), "Index (\(index)) is out of range")
         
         if index == self.selectedSegmentIndex {
             self.selectedSegmentIndex = UISegmentedControlNoSegment
@@ -222,7 +222,7 @@ open class SMSegmentView: UIControl {
             context.addPath(path)
             context.setStrokeColor(self.dividerColour.cgColor)
             context.setLineWidth(self.dividerWidth)
-            context.drawPath(using: CGPathDrawingMode.stroke)
+            context.drawPath(using: .stroke)
         }
         
         context.restoreGState()
