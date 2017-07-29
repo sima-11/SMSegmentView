@@ -10,9 +10,6 @@
 #### For CocoaPods User
 Add `pod 'SMSegmentView', '~> [VERSION]'` to Podfile.
 
-<b>Notice:</b> It seems when using Swift, CocoaPods won't accept frameworks target below iOS 8. So if you would like to support iOS 7, you might have to add this framework manually.
-
-
 # How To Use
 #### Step 1
 Drag `SMSegmentView.swift` and `SMSegment.swift` into your Xcode project.
