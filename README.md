@@ -8,7 +8,7 @@
 - More customisible than UISegmentedControl and easy to expand (e.g. styling).
 
 #### For CocoaPods User
-Add `pod 'SMSegmentView', '~> 1.1'` to Podfile.
+Add `pod 'SMSegmentView', '~> [VERSION]'` to Podfile.
 
 <b>Notice:</b> It seems when using Swift, CocoaPods won't accept frameworks target below iOS 8. So if you would like to support iOS 7, you might have to add this framework manually.
 
