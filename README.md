@@ -1,16 +1,16 @@
 <p align="center"><img src ="/Screenshots/example_1.png"/></p>
 
 # SMSegmentView Description
-- Custom segmented control for iOS 7 and above.
+- Custom segmented control for iOS.
 - Written in Swift.
 - Support both images and text.
-- Support vertically organise segments
-- More customisible than UISegmentedControl and easier to expand with new style.
+- Support vertically organise segments.
+- More customisible than UISegmentedControl and easy to expand (e.g. styling).
 
 #### For CocoaPods User
 Add `pod 'SMSegmentView', '~> 1.1'` to Podfile.
 
-<b>Notice:</b> It seems when using Swift, CocoaPods won't accept frameworks target below iOS 8. So if you would like to support iOS 7, you might have to add this framework manually. 
+<b>Notice:</b> It seems when using Swift, CocoaPods won't accept frameworks target below iOS 8. So if you would like to support iOS 7, you might have to add this framework manually.
 
 
 # How To Use
@@ -61,8 +61,8 @@ E.g. `segmentView.organiseMode = .Vertical`
 <p align="center"><img src ="/Screenshots/example_vertical.png"/></p>
 
 # More Info
-The framework comes with a sample project for you.
-Besides, this <a href='http://keeptheseinmind.blogspot.co.uk/2015/01/custom-segmentedcontrol-in-swift.html'>tutorial</a> may give you some idea how to expand this framework a little bit.
+The framework comes with a sample project to demonstrate how to use it.
+Besides, this <a href='http://keeptheseinmind.blogspot.co.uk/2015/01/custom-segmentedcontrol-in-swift.html'>tutorial</a> may give you some idea on how to expand this framework a little bit.
 
 # Screenshots
 <p align="center"><img src ="/Screenshots/example_2.png"/></p>
