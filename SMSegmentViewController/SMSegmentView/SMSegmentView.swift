@@ -56,8 +56,8 @@ open class SMSegmentView: UIControl {
         }
     }
 
-    fileprivate var segments: [SMSegment] = []
-    fileprivate var selectedSegment: SMSegment?
+    private var segments: [SMSegment] = []
+    private var selectedSegment: SMSegment?
 
 
     // INITIALISER
@@ -76,13 +76,11 @@ open class SMSegmentView: UIControl {
 
     public init(frame: CGRect, dividerColour: UIColor, dividerWidth: CGFloat, segmentAppearance: SMSegmentAppearance) {
 
-        super.init(frame: frame)
-
         self.dividerColour = dividerColour
         self.dividerWidth = dividerWidth
-        
         self.segmentAppearance = segmentAppearance
 
+        super.init(frame: frame)
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = true
     }
@@ -90,12 +88,12 @@ open class SMSegmentView: UIControl {
 
     // MARK: Actions
     // MARK: Select/deselect Segment
-    fileprivate func selectSegment(_ segment: SMSegment) {
+    private func selectSegment(_ segment: SMSegment) {
         segment.setSelected(true)
         self.selectedSegment = segment
         self.sendActions(for: .valueChanged)
     }
-    fileprivate func deselectSegment() {
+    private func deselectSegment() {
         self.selectedSegment?.setSelected(false)
         self.selectedSegment = nil
     }
@@ -114,9 +112,10 @@ open class SMSegmentView: UIControl {
         segment.offSelectionImage = offSelectionImage
         segment.index = index
         segment.didSelectSegment = { [weak self] segment in
-            if self!.selectedSegment != segment {
-                self!.deselectSegment()
-                self!.selectSegment(segment)
+            guard let aSelf = self else { return }
+            if aSelf.selectedSegment != segment {
+                aSelf.deselectSegment()
+                aSelf.selectSegment(segment)
             }
         }
         segment.setupUIElements()
@@ -141,7 +140,7 @@ open class SMSegmentView: UIControl {
         self.updateSegmentsLayout()
     }
     
-    fileprivate func resetSegmentIndicesWithIndex(_ index: Int, by: Int) {
+    private func resetSegmentIndicesWithIndex(_ index: Int, by: Int) {
         if index < self.segments.count {
             for i in index..<self.segments.count {
                 let segment = self.segments[i]
@@ -157,7 +156,7 @@ open class SMSegmentView: UIControl {
         self.updateSegmentsLayout()
     }
 
-    fileprivate func updateSegmentsLayout() {
+    private func updateSegmentsLayout() {
         
         guard self.segments.count > 0 else {
             return
@@ -194,11 +193,11 @@ open class SMSegmentView: UIControl {
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        let context = UIGraphicsGetCurrentContext()!
+        guard let context = UIGraphicsGetCurrentContext() else { return }
         self.drawDividerWithContext(context)
     }
 
-    fileprivate func drawDividerWithContext(_ context: CGContext) {
+    private func drawDividerWithContext(_ context: CGContext) {
 
         context.saveGState()
 

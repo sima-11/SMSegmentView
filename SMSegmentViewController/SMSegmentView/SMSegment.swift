@@ -10,11 +10,11 @@ import UIKit
 open class SMSegment: UIView {
     
     // UI components
-    fileprivate var imageView: UIImageView = UIImageView()
-    fileprivate var label: UILabel = UILabel()
+    private var imageView: UIImageView = UIImageView()
+    private var label: UILabel = UILabel()
     
     // Title
-    open var title: String? {
+    public var title: String? {
         didSet {
             DispatchQueue.main.async(execute: {
                 self.label.text = self.title
@@ -32,8 +32,8 @@ open class SMSegment: UIView {
     
     internal var didSelectSegment: ((_ segment: SMSegment)->())?
     
-    open internal(set) var index: Int = 0
-    open fileprivate(set) var isSelected: Bool = false
+    internal(set) var index: Int = 0
+    private(set) var isSelected: Bool = false
     
     
     // Init
@@ -49,7 +49,11 @@ open class SMSegment: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func addUIElementsToView() {
+    public override init(frame: CGRect) {
+        fatalError("init(frame:) won't work properly. Use init(appearance:) instead")
+    }
+    
+    private func addUIElementsToView() {
         
         self.imageView.contentMode = UIViewContentMode.scaleAspectFit
         self.addSubview(self.imageView)
@@ -122,15 +126,26 @@ open class SMSegment: UIView {
     }
     
     // MARK: Handle touch
-    override open  func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.isSelected == false {
             self.backgroundColor = self.appearance?.segmentTouchDownColour
         }
     }
     
-    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.isSelected == false{
             self.didSelectSegment?(self)
+        }
+    }
+    
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.isSelected == false {
+            self.backgroundColor = self.appearance?.segmentOffSelectionColour
+        }
+        else {
+            if self.isSelected == false {
+                self.backgroundColor = self.appearance?.segmentOnSelectionColour
+            }
         }
     }
 }
