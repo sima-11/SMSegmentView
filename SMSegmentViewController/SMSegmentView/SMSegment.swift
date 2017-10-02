@@ -139,13 +139,6 @@ open class SMSegment: UIView {
     }
     
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.isSelected == false {
-            self.backgroundColor = self.appearance?.segmentOffSelectionColour
-        }
-        else {
-            if self.isSelected == false {
-                self.backgroundColor = self.appearance?.segmentOnSelectionColour
-            }
-        }
+        backgroundColor = isSelected ? self.appearance?.segmentOnSelectionColour : self.appearance?.segmentOffSelectionColour
     }
 }
