@@ -29,3 +29,10 @@ public enum SMSegmentOrganiseMode: Int {
     case horizontal
     case vertical
 }
+
+public enum SMSTitleGravity {
+    case right
+    case bottom
+    case left
+    case top
+}
