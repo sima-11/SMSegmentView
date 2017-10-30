@@ -37,6 +37,8 @@ open class SMSegmentAppearance {
     open var titleOnSelectionFont: UIFont
     open var titleOffSelectionFont: UIFont
     
+    open var titleGravity: SMSTitleGravity
+    
     open var contentVerticalMargin: CGFloat
     
     
@@ -50,11 +52,12 @@ open class SMSegmentAppearance {
         self.titleOffSelectionColour = UIColor.darkGray
         self.titleOnSelectionFont = UIFont.systemFont(ofSize: 17.0)
         self.titleOffSelectionFont = UIFont.systemFont(ofSize: 17.0)
+        self.titleGravity = SMSTitleGravity.right
         
         self.contentVerticalMargin = 5.0
     }
     
-    public init(contentVerticalMargin: CGFloat, segmentOnSelectionColour: UIColor, segmentOffSelectionColour: UIColor, titleOnSelectionColour: UIColor, titleOffSelectionColour: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont) {
+    public init(contentVerticalMargin: CGFloat, segmentOnSelectionColour: UIColor, segmentOffSelectionColour: UIColor, titleOnSelectionColour: UIColor, titleOffSelectionColour: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont, titleGravity: SMSTitleGravity?) {
         
         self.contentVerticalMargin = contentVerticalMargin
         
@@ -65,5 +68,11 @@ open class SMSegmentAppearance {
         self.titleOffSelectionColour = titleOffSelectionColour
         self.titleOnSelectionFont = titleOnSelectionFont
         self.titleOffSelectionFont = titleOffSelectionFont
+        
+        if let gravity = titleGravity {
+            self.titleGravity = gravity
+        } else {
+            self.titleGravity = .right
+        }
     }
 }
