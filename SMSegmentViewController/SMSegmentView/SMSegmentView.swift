@@ -124,7 +124,6 @@ open class SMSegmentView: UIControl {
         self.segments.insert(segment, at: index)
 
         self.addSubview(segment)
-        self.layoutSubviews()
     }
     
     // MARK: Remove Segment

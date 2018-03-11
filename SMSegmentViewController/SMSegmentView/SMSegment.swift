@@ -16,10 +16,8 @@ open class SMSegment: UIView {
     // Title
     public var title: String? {
         didSet {
-            DispatchQueue.main.async(execute: {
-                self.label.text = self.title
-                self.layoutSubviews()
-            })
+            self.label.text = title
+            setNeedsLayout()
         }
     }
     
