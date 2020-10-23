@@ -30,7 +30,7 @@ open class SMSegment: UIView {
     
     internal var didSelectSegment: ((_ segment: SMSegment)->())?
     
-    internal(set) var index: Int = 0
+    var index: Int = 0
     private(set) var isSelected: Bool = false
     
     
@@ -53,10 +53,12 @@ open class SMSegment: UIView {
     
     private func addUIElementsToView() {
         
-        self.imageView.contentMode = UIViewContentMode.scaleAspectFit
+        self.imageView.contentMode = UIView.ContentMode.scaleAspectFit
         self.addSubview(self.imageView)
         
         self.label.textAlignment = NSTextAlignment.center
+        self.label.numberOfLines = 0
+        self.label.adjustsFontSizeToFitWidth = true
         self.addSubview(self.label)
     }
     
@@ -171,6 +173,11 @@ open class SMSegment: UIView {
                 titleViewFrame.origin.y = verticalMargin
             }
         }
+        
+        // To ensure label will break to multiple lines and ultimately shrink
+        // font size, ensure the label is no wider than the containing view (self)
+        let maxTitleWidth = self.frame.width - titleViewFrame.origin.x
+        titleViewFrame.size.width = min(titleViewFrame.size.width, maxTitleWidth)
         
         self.imageView.frame = imageViewFrame
         self.label.frame = titleViewFrame
